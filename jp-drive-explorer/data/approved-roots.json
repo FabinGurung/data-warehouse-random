@@ -1,0 +1,332 @@
+{
+  "schema": "jp-drive-radar/1.0",
+  "snapshot_date": "2026-11-23",
+  "scope": "Approved 01_JP repository roots and first-level Drive categories only; no private file metadata",
+  "source": "Live Google Drive parent/child metadata verified 2026-11-23",
+  "is_live_sync": false,
+  "public_projection": true,
+  "root": {
+    "name": "01_JP",
+    "id": "13aseDFRfY_SI_YC6X71K_EZ_XjnAorFp",
+    "start_here": "https://docs.google.com/document/d/1h-1tHUsw8d5GFSMTV1X5JFFERAYeK4jMylp9-nw-jlc/edit",
+    "directory_folder_id": "1tQMbtKZCW55Rkz7qvqtRhHp5DLJnQ4a6",
+    "archive_folder_id": "1cbxS2fjSSZN6-4SL_d3oUk5C-lcHJ65a"
+  },
+  "repositories": [
+    {
+      "id": "JP-01",
+      "name": "jp-a7-system-registry",
+      "drive_id": "1uZXtyySqjW9FDZ3s0KKKlPA0fSVPtLHM",
+      "symbol": "A7",
+      "summary": "Shared identities, repository directory, publication references and move history",
+      "folders": [
+        {
+          "id": "JP-01-01",
+          "name": "01 Canonical Identity and Organizations",
+          "drive_id": "1EwnYTTtNgYUNQoFqbJySgyhxU0iN73Oi"
+        },
+        {
+          "id": "JP-01-02",
+          "name": "02 Shared Reference Tables",
+          "drive_id": "1vuGw0vPH1fmttPNYexFAPNE2TjyYrEZj"
+        },
+        {
+          "id": "JP-01-03",
+          "name": "03 Website Publishing and Source Directory",
+          "drive_id": "1DRECcxUaz68mS_WPWbvReKxujmZ2O58t"
+        },
+        {
+          "id": "JP-01-04",
+          "name": "04 Drive and GitHub Connection Tools",
+          "drive_id": "10gqUMBwcd3QmXSZc60PBMKV9zuyTzMfl"
+        },
+        {
+          "id": "JP-01-05",
+          "name": "05 Drive Administration and Change History",
+          "drive_id": "1Hzj2rv3wu-rjKExO5JCRjnaZ3JSkgM4w"
+        }
+      ]
+    },
+    {
+      "id": "JP-02",
+      "name": "jp-site-operations",
+      "drive_id": "1w5piZ3Pkn0NJ1JeQI-hCdowYGyFOx6BR",
+      "symbol": "OPS",
+      "summary": "Project locations, maps, progress, notifications and messaging",
+      "folders": [
+        {
+          "id": "JP-02-01",
+          "name": "01 LIVE Project Map and Notifications",
+          "drive_id": "1B5ORqVWFhV28KUuMWDKmqerzw2GjjNok"
+        },
+        {
+          "id": "JP-02-02",
+          "name": "02 Project Sections and Location References",
+          "drive_id": "1Mhmr1MMxW9mS5jyuCBX8VEA-D7hHZuKD"
+        },
+        {
+          "id": "JP-02-03",
+          "name": "03 Instructions and Semantic Guides",
+          "drive_id": "1EI-HAaZ7vTCBOO_H8VpDem4tkx30ptKA"
+        },
+        {
+          "id": "JP-02-04",
+          "name": "04 Messaging Automation and Control Sources",
+          "drive_id": "1IbqYCc7U4iD6-o-GLCsoQsLom3P22Web"
+        },
+        {
+          "id": "JP-02-05",
+          "name": "Rohini Engineering and Builders",
+          "drive_id": "1fOCfPqCtv90FP6TvLbnjR43w02w1QeMt"
+        },
+        {
+          "id": "JP-02-06",
+          "name": "Fishtail Builders",
+          "drive_id": "1pXW8OqqZ5I9TAVlbvGMq1RRwr1p2S5WN"
+        },
+        {
+          "id": "JP-02-07",
+          "name": "90 Command Center Design — Reference Only",
+          "drive_id": "1lEi1x8TkYmJ8AXYAlCNI9RC5fSf2nlGC"
+        }
+      ]
+    },
+    {
+      "id": "JP-03",
+      "name": "jp-field-desk-library",
+      "drive_id": "19WXVNorL-9FjCMtYrCsgTBww88GVQHDE",
+      "symbol": "LIB",
+      "summary": "Original field and desk evidence, model collections and drawing sources",
+      "folders": [
+        {
+          "id": "JP-03-01",
+          "name": "01 Project Resource and File Registers",
+          "drive_id": "1iSXNHaPqXSHzAZ-tJyB16nGo4GFIINCN"
+        },
+        {
+          "id": "JP-03-02",
+          "name": "02 Fishtail Project Folder Template and Shared Standards",
+          "drive_id": "13Kq2BQGrha4wUHtJSc0Ye1VqHbr25lay"
+        },
+        {
+          "id": "JP-03-03",
+          "name": "03 Document Engineering and Templates",
+          "drive_id": "1C7jGFY-GvwqE4yVMB0C8XJjQiDjwjTsS"
+        },
+        {
+          "id": "JP-03-04",
+          "name": "Fishtail Builders",
+          "drive_id": "1WsTKDv1MZyKn-g47TZW2tONkbaJ5gaWl"
+        },
+        {
+          "id": "JP-03-05",
+          "name": "Rohini Engineering and Builders",
+          "drive_id": "1jEkxGF8tXZJ4hqh2MwVEQl1NCEFgASZB"
+        },
+        {
+          "id": "JP-03-06",
+          "name": "JP Enterprise",
+          "drive_id": "16MzSlqbPQpZFV5C_KSxwmpTdX9HQEwwp"
+        }
+      ]
+    },
+    {
+      "id": "JP-04",
+      "name": "jp-estimating-and-boq",
+      "drive_id": "126AVR4iacXV3bwK8St66QrUFrYqlRtWS",
+      "symbol": "BOQ",
+      "summary": "Rates, quantity takeoff, BBS and authoritative editable estimation workbooks",
+      "folders": [
+        {
+          "id": "JP-04-01",
+          "name": "00 Source Index and Publishing",
+          "drive_id": "1vgb3a4k-GkgdPJWT3C_qy31T1B3QyF2o"
+        },
+        {
+          "id": "JP-04-02",
+          "name": "01 Project Funding and Reference Records",
+          "drive_id": "1tDfNQYxflCacWHL3v0QhIoAQPUnf-GIO"
+        },
+        {
+          "id": "JP-04-03",
+          "name": "02 Estimating Sources and History",
+          "drive_id": "1SVN58AJW1ulNbMUTndNrst4yTzht5Gyp"
+        },
+        {
+          "id": "JP-04-04",
+          "name": "03 Fishtail Builders — Restricted Field Records",
+          "drive_id": "1shI43NWhlhvV0ef5q2_sNlXvKkAF2_WG"
+        },
+        {
+          "id": "JP-04-05",
+          "name": "04 Rohini Engineering and Builders — Restricted Field Records",
+          "drive_id": "1Wm9eDwhlrHrMiL6C7joMipTctYALc8O1"
+        },
+        {
+          "id": "JP-04-06",
+          "name": "90 Reviewed Historical Field Records",
+          "drive_id": "1SPKRupmfOZSC2r7CC03mo_ekvQjDsWgR"
+        }
+      ]
+    },
+    {
+      "id": "JP-05",
+      "name": "jp-scheduling-resources-management",
+      "drive_id": "1HGw_OKAQobPCv2JW0j23eUqjBwlsJdpt",
+      "symbol": "4D",
+      "summary": "Project scheduling, activity sources, work norms and resource libraries",
+      "folders": [
+        {
+          "id": "JP-05-01",
+          "name": "01 Project Schedule Sources",
+          "drive_id": "17SlBSjcmYM6RACD5HwRg7cyn4eYfc3qV"
+        },
+        {
+          "id": "JP-05-02",
+          "name": "02 Resource Library",
+          "drive_id": "1rrj00lOZQ8SA0boDRATpdom1d8jiviGS"
+        },
+        {
+          "id": "JP-05-03",
+          "name": "03 Project Registry and QA",
+          "drive_id": "1ppLrcnH3G10X7yNDZd3eozHDU46JW8z3"
+        },
+        {
+          "id": "JP-05-04",
+          "name": "04 Project Controls Kernel",
+          "drive_id": "1e75xsCpxO1o-YnIK6N5jHKlBvOO116zi"
+        },
+        {
+          "id": "JP-05-05",
+          "name": "99 Archive and Version History",
+          "drive_id": "1ypl3gTYYwkTuQOOU0I_QGoFWet9SQ7Z5"
+        }
+      ]
+    },
+    {
+      "id": "JP-06",
+      "name": "jp-drawing-coordination",
+      "drive_id": "1cSQUHmVOntSJQWuoShbUuAnJ1i_Rb7qv",
+      "symbol": "CAD",
+      "summary": "Editable 2D/3D sources and drawing publication",
+      "folders": [
+        {
+          "id": "JP-06-01",
+          "name": "01 Shared Drawing Standards",
+          "drive_id": "16dbAQXelgymaCavzMjMrJXtDJ9zMze6B"
+        },
+        {
+          "id": "JP-06-02",
+          "name": "Fishtail Builders",
+          "drive_id": "1WNR_Qy2-VzJUtAHjrniixvTVSDBwFzRE"
+        },
+        {
+          "id": "JP-06-03",
+          "name": "Rohini Engineering and Builders",
+          "drive_id": "1wrtzdPtkD72GU6hhB8TEnii8_0e0iuLu"
+        },
+        {
+          "id": "JP-06-04",
+          "name": "JP Enterprise",
+          "drive_id": "1byq7iwerkn0eC6ncS6l0wIKNdGoqcUFc"
+        },
+        {
+          "id": "JP-06-05",
+          "name": "90 Website and Drawing Archives",
+          "drive_id": "1nxbi45i8cyUeH3zBeIHubITGAtnRN8VH"
+        }
+      ]
+    },
+    {
+      "id": "JP-07",
+      "name": "jp-structural-analysis",
+      "drive_id": "1KhjI1OF33VGS5F3kDBe5eg0_XWbA9bHe",
+      "symbol": "SAR",
+      "summary": "Structural inputs, engineering review and report publishing",
+      "folders": [
+        {
+          "id": "JP-07-01",
+          "name": "01 Research QA and Historical Publications",
+          "drive_id": "1ViudVSKVdDr7OPl-xFjJTankIDAEQJoO"
+        },
+        {
+          "id": "JP-07-02",
+          "name": "02 Fishtail Builders",
+          "drive_id": "1KyqZcDZQQp6IchYuCPgPuWWx413kfi7K"
+        },
+        {
+          "id": "JP-07-03",
+          "name": "03 Rohini Engineering and Builders",
+          "drive_id": "18_gXm9hfhBFeKsTlOaV0_L7r2ZyJYjzD"
+        },
+        {
+          "id": "JP-07-04",
+          "name": "04 Published Website and Report",
+          "drive_id": "1AKPXkBnj5WxQni99srH1DK4noGLig9uh"
+        }
+      ]
+    },
+    {
+      "id": "JP-08",
+      "name": "jp-research-lab",
+      "drive_id": "1LjQcjA9KQU7GvQLlhz6t1OFgIyjZWGId",
+      "symbol": "R&D",
+      "summary": "Enterprise research and academic writing",
+      "folders": [
+        {
+          "id": "JP-08-01",
+          "name": "01 Enterprise Documents",
+          "drive_id": "1J4DnCmgErFixlFaciWTGmTEWZ3CWJ_zg"
+        },
+        {
+          "id": "JP-08-02",
+          "name": "02 Academic Writing",
+          "drive_id": "1B-pRF_PM3UPEb9-D_1KmVT1OEt1jtQ6q"
+        }
+      ]
+    },
+    {
+      "id": "JP-09",
+      "name": "jp-study-hub",
+      "drive_id": "1q7mPV7RRhZYQzUM2MvLN5OdHjFADoFHA",
+      "symbol": "STDY",
+      "summary": "Structural study, construction management, engineering exams and extraction evidence",
+      "folders": [
+        {
+          "id": "JP-09-01",
+          "name": "01 MSc Structural Engineering",
+          "drive_id": "10vmHOd4wlJDfp6qs6JEqwbFwmTJW98Id"
+        },
+        {
+          "id": "JP-09-02",
+          "name": "02 MSc Construction Management",
+          "drive_id": "16IvOZeNidPZz3LekAclfGP0GolJaBl2C"
+        },
+        {
+          "id": "JP-09-03",
+          "name": "03 Professional Engineering and Competitive Exams",
+          "drive_id": "1SrCyfQFgRijosKFRh2ICXOYZ8U4XU4h_"
+        },
+        {
+          "id": "JP-09-04",
+          "name": "04 Extraction Runs",
+          "drive_id": "1DfMa5loPZ1vKta2lWgL1WbUfs4z1DjHi"
+        }
+      ]
+    },
+    {
+      "id": "JP-10",
+      "name": "data-warehouse-random",
+      "drive_id": "1q0VpM43s4lZsbjZNLqYVNVMrqL5YPsHC",
+      "symbol": "TEST",
+      "summary": "Sandbox publishing lane; historical Pilates prototype retained",
+      "folders": [
+        {
+          "id": "JP-10-01",
+          "name": "01 Paila Pilates — Operational Source Pointer",
+          "drive_id": "1kylwj3F9XYug_ZOiINrOod6yJ3PuzgQ9"
+        }
+      ]
+    }
+  ]
+}
