@@ -1,11 +1,15 @@
 import assert from "node:assert/strict";
+import {Script} from "node:vm";
 import {readFileSync} from "node:fs";
 import {dirname,join} from "node:path";
 import {fileURLToPath} from "node:url";
 const root=dirname(dirname(fileURLToPath(import.meta.url)));
 const html=readFileSync(join(root,"index.html"),"utf8");
 const manifest=JSON.parse(readFileSync(join(root,"data/approved-roots.json"),"utf8"));
-assert.equal(manifest.schema,"jp-drive-radar/1.0");
+assert.equal(manifest.schema,"jp-drive-radar/1.0"); // Historical manifest contract retained; UI is now a plain tree.
+const inlineScript=html.match(/<script>([\s\S]*?)<\/script>/)?.[1];
+assert.ok(inlineScript,"Source tree interactions missing");
+new Script(inlineScript,{filename:"jp-drive-explorer/index.html"});
 assert.equal(manifest.public_projection,true);
 assert.equal(manifest.is_live_sync,false);
 assert.equal(manifest.repositories.length,10);
