@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07111b">
+<meta name="description" content="A Spider Radar view of ten JP_System repositories and their verified first-level Google Drive source folders.">
+<title>01_JP — Spider Radar · Source Explorer</title>
+<link rel="stylesheet" href="radar.css">
+<script src="radar.js" defer></script>
+</head>
+<body>
+<header class="radar-topbar">
+  <div class="top-identity">
+    <div class="brand-mark" aria-hidden="true">JP</div>
+    <div><span class="kicker">JP System / Source Navigator</span><strong>01_JP <span style="color:#91d4d5">/</span> Spider Radar</strong><small>Ten repositories · one signed-in Drive source directory</small></div>
+  </div>
+  <div class="top-right">
+    <span class="signal">Verified roots</span>
+    <a href="../" title="Historical repository home">Repository home <span>↗</span></a>
+  </div>
+</header>
+<div class="app-shell">
+  <aside class="left-rail" aria-label="Explorer contents">
+    <div class="kicker">Index / 01</div>
+    <h2>Table of contents</h2>
+    <p class="rail-copy">Each radar station is a separate GitHub repository linked to its original Google Drive backend.</p>
+    <div class="rail-chapter">Repository stations</div>
+    <nav id="toc" class="toc-list" aria-label="Ten repository nodes"></nav>
+    <div class="rail-chapter">Source directories</div>
+    <a class="rail-link" href="https://drive.google.com/drive/folders/13aseDFRfY_SI_YC6X71K_EZ_XjnAorFp" target="_blank" rel="noopener noreferrer"><span>01_JP Drive root</span>↗</a>
+    <a class="rail-link" href="https://docs.google.com/document/d/1h-1tHUsw8d5GFSMTV1X5JFFERAYeK4jMylp9-nw-jlc/edit" target="_blank" rel="noopener noreferrer"><span>00 START HERE</span>↗</a>
+    <a class="rail-link" href="https://drive.google.com/drive/folders/1cbxS2fjSSZN6-4SL_d3oUk5C-lcHJ65a" target="_blank" rel="noopener noreferrer"><span>99 Archive Gallery</span>↗</a>
+    <a class="rail-link" href="https://fabingurung.github.io/jp-a7-system-registry/" target="_blank" rel="noopener noreferrer"><span>A7 System Registry</span>↗</a>
+  </aside>
+  <main class="radar-main">
+    <section class="intro" aria-labelledby="pageTitle">
+      <div class="kicker">02 / Connected source atlas</div>
+      <h1 id="pageTitle">Follow the threads.<br><em>Find the source.</em></h1>
+      <p>Explore the 01_JP source hierarchy as a ten-spoke spider radar. Select a station to inspect its verified Drive folders, GitHub source, and published site. No private documents are copied into this public interface.</p>
+      <div class="statbar" aria-label="Snapshot coverage">
+        <div class="stat-chip"><strong>10</strong><span>repository nodes</span></div>
+        <div class="stat-chip"><strong id="folderTotal">45</strong><span>verified source categories</span></div>
+        <div class="stat-chip"><strong>01_JP</strong><span>original Drive root</span></div>
+      </div>
+    </section>
+    <div class="radar-toolbar">
+      <label class="searchbox"><input id="search" type="search" autocomplete="off" aria-label="Search repository nodes and source folders" placeholder="Search a repository or folder"></label>
+      <span id="searchCount" class="zoom-indicator" style="min-width:100px;text-align:left">10 nodes indexed</span>
+      <div class="toolgroup" role="group" aria-label="Pan and zoom map">
+        <button id="zoomOut" class="toolbutton" type="button" aria-label="Zoom out">−</button>
+        <button id="zoomIn" class="toolbutton" type="button" aria-label="Zoom in">+</button>
+        <button id="fitView" class="toolbutton wide" type="button">Fit radar</button>
+        <button id="resetView" class="toolbutton wide" type="button">Reset</button>
+        <output id="zoomValue" class="zoom-indicator" aria-live="off">100%</output>
+      </div>
+    </div>
+    <section id="radarViewport" class="radar-viewport" aria-label="Interactive spider radar map of ten repository source directories" aria-busy="true">
+      <div id="radarWorld" class="radar-world">
+        <div class="starfield" aria-hidden="true"></div>
+        <svg id="radarGrid" class="radar-grid" viewBox="0 0 1050 850" aria-hidden="true" focusable="false"></svg>
+        <div class="radial-label north" aria-hidden="true">00°</div><div class="radial-label west" aria-hidden="true">270°</div><div class="radial-label east" aria-hidden="true">90°</div>
+        <button id="rootButton" class="root-button" type="button" aria-label="Show 01_JP central Drive directory and all repository folders">
+          <span class="root-code">01_JP</span><small>Source root</small><small style="opacity:.76">● Connected</small>
+        </button>
+        <div id="repositoryNodes"></div>
+      </div>
+      <div id="loading" style="position:absolute;left:16px;top:14px;z-index:6;border:1px solid #49697c;background:#0c2232e8;border-radius:10px;padding:9px 14px;color:#cdeefa;font-size:12px">Loading verified 01_JP roots…</div>
+      <div class="radar-hint" aria-hidden="true"><span>◎ Drag map · Scroll to zoom · Pinch on touch</span><span>Click a station to expose its source folders</span></div>
+    </section>
+    <footer class="radar-footer"><span>Spider radar = navigation only. Radial distance does not encode performance or project status.</span><span id="snapshot">Provider snapshot · 23 November 2026</span></footer>
+  </main>
+  <aside class="detail-rail" id="inspector" aria-labelledby="inspectorHeading">
+    <div class="detail-header">
+      <div class="kicker">03 / Source inspector</div><h2 id="inspectorHeading">Selected station</h2>
+      <div class="selected-orbit">
+        <div class="selected-symbol" id="selectedSymbol">JP</div>
+        <div><strong id="selectedTitle">01_JP Source Directory</strong><small id="selectedSub">Loading…</small></div>
+      </div>
+      <p id="selectedDescription" class="detail-description">Choose a repository node to see its original source locations.</p>
+      <div id="inspectorActions" class="action-links"></div>
+      <div id="trail" class="context-trail"></div>
+    </div>
+    <div class="folder-head"><h3>Verified Drive folders</h3><span class="count-bubble" id="folderCount">—</span></div>
+    <div class="folder-stack" id="folderList"><div class="empty-state">Loading source categories…</div></div>
+    <div class="inspector-note"><strong>Access is governed at the original source.</strong> These links open Google Drive with existing sharing controls. A repository folder does not establish that its files are publicly readable or imported by GitHub Actions. Nested file census and approval checks remain in signed-in Drive.</div>
+  </aside>
+</div>
+<noscript><p style="padding:20px">This explorer requires JavaScript to display the radar. Open the original <a href="https://drive.google.com/drive/folders/13aseDFRfY_SI_YC6X71K_EZ_XjnAorFp">01_JP Drive folder</a> instead.</p></noscript>
+</body>
+</html>
