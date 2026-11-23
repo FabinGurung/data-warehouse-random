@@ -1,4 +1,4 @@
-name: JP Spider Radar — Public Directory QA
+name: JP Source Folder Tree — Public Directory QA
 on:
   push:
     branches:
@@ -15,15 +15,13 @@ jobs:
   static-qa:
     runs-on: ubuntu-latest
     steps:
-      - name: Read versioned radar source
+      - name: Read versioned folder-tree source
         uses: actions/checkout@v4
       - name: Node setup
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: JavaScript syntax
-        run: node --check jp-drive-explorer/radar.js
-      - name: Manifest and navigation QA
+      - name: Light-tree syntax, source manifest and navigation QA
         run: node jp-drive-explorer/qa/verify.mjs
       - name: Preserve independent original prototype
         run: |
