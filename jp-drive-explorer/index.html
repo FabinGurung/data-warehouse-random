@@ -3,89 +3,150 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#07111b">
-<meta name="description" content="A Spider Radar view of ten JP_System repositories and their verified first-level Google Drive source folders.">
-<title>01_JP — Spider Radar · Source Explorer</title>
-<link rel="stylesheet" href="radar.css">
-<script src="radar.js" defer></script>
+<meta name="theme-color" content="#f7f9fc">
+<meta name="description" content="A plain, light-themed color-coded 01_JP Google Drive source folder tree with links to ten repository backends.">
+<title>01_JP · Source Folder Tree</title>
+<style>
+:root{color-scheme:light;--bg:#f5f8fc;--panel:#fff;--text:#182c40;--muted:#637489;--line:#dce5ee;--link:#1765a8;--repo:#1967b3;--folder:#147d53;--reference:#7247b4;--restricted:#a15b15;--archive:#617285;--publish:#bf4778}
+*{box-sizing:border-box}body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}a{color:var(--link)}a:hover{text-decoration-thickness:2px}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #1967b3;outline-offset:3px}
+.top{background:#fff;border-bottom:1px solid var(--line);padding:16px clamp(16px,3vw,42px)}.eyebrow{color:#497393;font-weight:750;letter-spacing:.12em;text-transform:uppercase;font-size:10px}.top h1{font-size:clamp(23px,3vw,33px);letter-spacing:-.045em;margin:4px 0 5px}.top p{color:var(--muted);font-size:13px;margin:0;max-width:850px}.layout{display:grid;grid-template-columns:minmax(190px,238px) minmax(0,1fr);gap:22px;max-width:1470px;margin:0 auto;padding:20px clamp(14px,3vw,38px) 46px}.sidebar{align-self:start;position:sticky;top:15px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}.sidebar strong{display:block;font-size:12px;margin-bottom:12px}.toc{display:grid;gap:3px}.toc a{display:flex;align-items:center;gap:9px;padding:6px;border-radius:7px;text-decoration:none;color:#334d65;font-size:11px;overflow-wrap:anywhere}.toc a:hover{background:#edf5fb;color:var(--repo)}.toc span{font:11px ui-monospace,monospace;color:var(--repo)}.side-help{font-size:11px;color:var(--muted);padding-top:14px;margin-top:14px;border-top:1px solid var(--line)}.main{min-width:0}.summary{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:13px}.summary span{background:#fff;border:1px solid var(--line);border-radius:9px;padding:7px 11px;font-size:11px;color:#556c80}.summary b{color:#173b57;font-size:14px;margin-right:5px}.legend{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}.legend span{border-radius:6px;padding:3px 8px;font-size:11px;border:1px solid currentColor;background:#fff;white-space:nowrap}.legend .repository{color:var(--repo)}.legend .folder{color:var(--folder)}.legend .reference{color:var(--reference)}.legend .restricted{color:var(--restricted)}.legend .archive{color:var(--archive)}.legend .publish{color:var(--publish)}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}.toolbar input{flex:1 1 240px;max-width:410px;padding:9px 11px;border:1px solid #ccd9e5;border-radius:8px;background:#fff;color:var(--text)}.toolbar button{border:1px solid #cbd8e5;background:#fff;color:#315879;border-radius:8px;padding:8px 10px;font-size:12px}.toolbar button:hover{background:#e9f2fa}.result{font-size:12px;color:var(--muted)}.tree{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px 18px 22px;overflow-x:auto;font:12px/1.63 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace}
+.tree-row{display:flex;align-items:baseline;gap:5px;min-width:max-content;white-space:pre}.tree .branch{color:#afbdc9;white-space:pre}.tree .folder-symbol{font-size:13px}.tree .item-link{text-decoration:none;font-weight:600}.tree .item-link:hover{text-decoration:underline}.tree .root-row{font-size:15px;font-weight:800;margin-bottom:2px}.tree .root-row .item-link{color:#213b54}.tree .subnote{font-size:10px;color:var(--muted);font-weight:400}.tree .repo-row{list-style:none;cursor:pointer}.tree summary::-webkit-details-marker{display:none}.tree summary:after{content:"▾";font-size:11px;color:#6c8193;padding-left:5px}.tree details:not([open]) summary:after{content:"▸"}.tree details{margin:0}.tree .repo-name{color:var(--repo);font-weight:800}.tree .mini-count{border-radius:5px;background:#eaf2fb;color:#46769c;font-size:10px;padding:0 6px;margin-left:9px}.tree .repo-links{display:flex;gap:9px;align-items:baseline;color:#acbdc9;font-size:10px;white-space:pre}.tree .repo-links a{color:#4d7a9b}.tree .repo-links .branch{white-space:pre}.tree .reference .folder-symbol,.tree .reference .item-link{color:var(--reference)}.tree .restricted .folder-symbol,.tree .restricted .item-link{color:var(--restricted)}.tree .archive .folder-symbol,.tree .archive .item-link{color:var(--archive)}.tree .publish .folder-symbol,.tree .publish .item-link{color:var(--publish)}.tree .folder .folder-symbol,.tree .folder .item-link{color:var(--folder)}.tree .root-row .folder-symbol{color:var(--repo)}.tree details[data-hidden="true"],.tree .tree-row[data-hidden="true"]{display:none}.notice{font-size:12px;line-height:1.6;color:#53697f;margin-top:13px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:11px 13px}.notice strong{color:#28475f}.footer{margin-top:16px;font-size:12px}.footer a{margin-right:15px}
+@media(max-width:800px){.layout{grid-template-columns:1fr;gap:14px}.sidebar{position:static}.toc{grid-template-columns:repeat(2,minmax(0,1fr))}.tree{padding:12px;font-size:11px}.toolbar input{max-width:none}}@media(max-width:450px){.toc{grid-template-columns:1fr}.top{padding:15px}.tree{font-size:10.5px}.summary span{padding:6px 8px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
 </head>
 <body>
-<header class="radar-topbar">
-  <div class="top-identity">
-    <div class="brand-mark" aria-hidden="true">JP</div>
-    <div><span class="kicker">JP System / Source Navigator</span><strong>01_JP <span style="color:#91d4d5">/</span> Spider Radar</strong><small>Ten repositories · one signed-in Drive source directory</small></div>
-  </div>
-  <div class="top-right">
-    <span class="signal">Verified roots</span>
-    <a href="../" title="Historical repository home">Repository home <span>↗</span></a>
-  </div>
+<header class="top">
+  <div class="eyebrow">JP System · Google Drive source directory</div>
+  <h1>01_JP — Folder Tree</h1>
+  <p>A clean, read-only hierarchy. Color indicates the purpose of each folder, not its access permissions or approval status. Click any name to open its original source location.</p>
 </header>
-<div class="app-shell">
-  <aside class="left-rail" aria-label="Explorer contents">
-    <div class="kicker">Index / 01</div>
-    <h2>Table of contents</h2>
-    <p class="rail-copy">Each radar station is a separate GitHub repository linked to its original Google Drive backend.</p>
-    <div class="rail-chapter">Repository stations</div>
-    <nav id="toc" class="toc-list" aria-label="Ten repository nodes"></nav>
-    <div class="rail-chapter">Source directories</div>
-    <a class="rail-link" href="https://drive.google.com/drive/folders/13aseDFRfY_SI_YC6X71K_EZ_XjnAorFp" target="_blank" rel="noopener noreferrer"><span>01_JP Drive root</span>↗</a>
-    <a class="rail-link" href="https://docs.google.com/document/d/1h-1tHUsw8d5GFSMTV1X5JFFERAYeK4jMylp9-nw-jlc/edit" target="_blank" rel="noopener noreferrer"><span>00 START HERE</span>↗</a>
-    <a class="rail-link" href="https://drive.google.com/drive/folders/1cbxS2fjSSZN6-4SL_d3oUk5C-lcHJ65a" target="_blank" rel="noopener noreferrer"><span>99 Archive Gallery</span>↗</a>
-    <a class="rail-link" href="https://fabingurung.github.io/jp-a7-system-registry/" target="_blank" rel="noopener noreferrer"><span>A7 System Registry</span>↗</a>
-  </aside>
-  <main class="radar-main">
-    <section class="intro" aria-labelledby="pageTitle">
-      <div class="kicker">02 / Connected source atlas</div>
-      <h1 id="pageTitle">Follow the threads.<br><em>Find the source.</em></h1>
-      <p>Explore the 01_JP source hierarchy as a ten-spoke spider radar. Select a station to inspect its verified Drive folders, GitHub source, and published site. No private documents are copied into this public interface.</p>
-      <div class="statbar" aria-label="Snapshot coverage">
-        <div class="stat-chip"><strong>10</strong><span>repository nodes</span></div>
-        <div class="stat-chip"><strong id="folderTotal">45</strong><span>verified source categories</span></div>
-        <div class="stat-chip"><strong>01_JP</strong><span>original Drive root</span></div>
-      </div>
-    </section>
-    <div class="radar-toolbar">
-      <label class="searchbox"><input id="search" type="search" autocomplete="off" aria-label="Search repository nodes and source folders" placeholder="Search a repository or folder"></label>
-      <span id="searchCount" class="zoom-indicator" style="min-width:100px;text-align:left">10 nodes indexed</span>
-      <div class="toolgroup" role="group" aria-label="Pan and zoom map">
-        <button id="zoomOut" class="toolbutton" type="button" aria-label="Zoom out">−</button>
-        <button id="zoomIn" class="toolbutton" type="button" aria-label="Zoom in">+</button>
-        <button id="fitView" class="toolbutton wide" type="button">Fit radar</button>
-        <button id="resetView" class="toolbutton wide" type="button">Reset</button>
-        <output id="zoomValue" class="zoom-indicator" aria-live="off">100%</output>
-      </div>
+<div class="layout">
+  <aside class="sidebar"><strong>Table of contents</strong><nav class="toc" aria-label="Repository index"><a href="#repo-01"><span>01</span>jp-a7-system-registry</a>
+<a href="#repo-02"><span>02</span>jp-site-operations</a>
+<a href="#repo-03"><span>03</span>jp-field-desk-library</a>
+<a href="#repo-04"><span>04</span>jp-estimating-and-boq</a>
+<a href="#repo-05"><span>05</span>jp-scheduling-resources-management</a>
+<a href="#repo-06"><span>06</span>jp-drawing-coordination</a>
+<a href="#repo-07"><span>07</span>jp-structural-analysis</a>
+<a href="#repo-08"><span>08</span>jp-research-lab</a>
+<a href="#repo-09"><span>09</span>jp-study-hub</a>
+<a href="#repo-10"><span>10</span>data-warehouse-random</a></nav><div class="side-help">These ten repositories have independent source folders, GitHub code and Pages sites. The source library remains in Google Drive.</div></aside>
+  <main class="main" id="main">
+    <div class="summary"><span><b>10</b> repositories</span><span><b>45</b> verified direct subfolders</span><span><b>23 Nov 2026</b> source snapshot</span></div>
+    <div class="legend" aria-label="Folder color key"><span class="repository">▰ Repository</span><span class="folder">▰ Source folder</span><span class="reference">▦ Guide / reference</span><span class="restricted">▣ Restricted-labelled</span><span class="publish">▤ Publishing</span><span class="archive">▧ Archive / history</span></div>
+    <div class="toolbar">
+      <input id="treeSearch" type="search" aria-label="Find a folder or repository" autocomplete="off" placeholder="Find a repository or source folder">
+      <button type="button" id="expandAll">Expand all</button>
+      <button type="button" id="collapseAll">Collapse all</button>
+      <button type="button" id="clearSearch">Reset</button>
+      <span class="result" id="resultStatus" aria-live="polite">Showing 10 repositories and 45 direct folders</span>
     </div>
-    <section id="radarViewport" class="radar-viewport" aria-label="Interactive spider radar map of ten repository source directories" aria-busy="true">
-      <div id="radarWorld" class="radar-world">
-        <div class="starfield" aria-hidden="true"></div>
-        <svg id="radarGrid" class="radar-grid" viewBox="0 0 1050 850" aria-hidden="true" focusable="false"></svg>
-        <div class="radial-label north" aria-hidden="true">00°</div><div class="radial-label west" aria-hidden="true">270°</div><div class="radial-label east" aria-hidden="true">90°</div>
-        <button id="rootButton" class="root-button" type="button" aria-label="Show 01_JP central Drive directory and all repository folders">
-          <span class="root-code">01_JP</span><small>Source root</small><small style="opacity:.76">● Connected</small>
-        </button>
-        <div id="repositoryNodes"></div>
-      </div>
-      <div id="loading" style="position:absolute;left:16px;top:14px;z-index:6;border:1px solid #49697c;background:#0c2232e8;border-radius:10px;padding:9px 14px;color:#cdeefa;font-size:12px">Loading verified 01_JP roots…</div>
-      <div class="radar-hint" aria-hidden="true"><span>◎ Drag map · Scroll to zoom · Pinch on touch</span><span>Click a station to expose its source folders</span></div>
-    </section>
-    <footer class="radar-footer"><span>Spider radar = navigation only. Radial distance does not encode performance or project status.</span><span id="snapshot">Provider snapshot · 23 November 2026</span></footer>
+    <section class="tree" aria-label="01_JP source folder hierarchy" id="tree"><div class="tree-row root-row"><span class="folder-symbol" aria-hidden="true">▣</span> <a href="https://drive.google.com/drive/folders/13aseDFRfY_SI_YC6X71K_EZ_XjnAorFp" target="_blank" rel="noopener noreferrer" class="item-link">01_JP</a> <span class="subnote">source root</span></div>
+<div class="tree-row reference" ><span class="branch" aria-hidden="true">├── </span><span class="folder-symbol" aria-hidden="true">▦</span> <a href="https://docs.google.com/document/d/1h-1tHUsw8d5GFSMTV1X5JFFERAYeK4jMylp9-nw-jlc/edit" target="_blank" rel="noopener noreferrer" class="item-link">00 START HERE — Repository Directory</a></div>
+<div class="tree-row reference" ><span class="branch" aria-hidden="true">├── </span><span class="folder-symbol" aria-hidden="true">▦</span> <a href="https://drive.google.com/drive/folders/1tQMbtKZCW55Rkz7qvqtRhHp5DLJnQ4a6" target="_blank" rel="noopener noreferrer" class="item-link">09 GitHub Repositories</a></div>
+<details id="repo-01" data-repo="jp-a7-system-registry" open><summary class="tree-row repo-row"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <span class="repo-name">01 jp-a7-system-registry</span><span class="mini-count">5 folders</span></summary>
+  <div class="repo-links"><span class="branch" aria-hidden="true">│   │   </span><a href="https://drive.google.com/drive/folders/1uZXtyySqjW9FDZ3s0KKKlPA0fSVPtLHM" target="_blank" rel="noopener noreferrer">Drive</a><span>·</span><a href="https://github.com/FabinGurung/jp-a7-system-registry" target="_blank" rel="noopener noreferrer">GitHub</a><span>·</span><a href="https://fabingurung.github.io/jp-a7-system-registry/" target="_blank" rel="noopener noreferrer">Pages</a></div>
+  <div class="children"><div class="tree-row folder" data-folder data-label="01 canonical identity and organizations"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/1EwnYTTtNgYUNQoFqbJySgyhxU0iN73Oi" target="_blank" rel="noopener noreferrer" class="item-link">01 Canonical Identity and Organizations</a></div>
+<div class="tree-row reference" data-folder data-label="02 shared reference tables"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▦</span> <a href="https://drive.google.com/drive/folders/1vuGw0vPH1fmttPNYexFAPNE2TjyYrEZj" target="_blank" rel="noopener noreferrer" class="item-link">02 Shared Reference Tables</a></div>
+<div class="tree-row publish" data-folder data-label="03 website publishing and source directory"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▤</span> <a href="https://drive.google.com/drive/folders/1DRECcxUaz68mS_WPWbvReKxujmZ2O58t" target="_blank" rel="noopener noreferrer" class="item-link">03 Website Publishing and Source Directory</a></div>
+<div class="tree-row folder" data-folder data-label="04 drive and github connection tools"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/10gqUMBwcd3QmXSZc60PBMKV9zuyTzMfl" target="_blank" rel="noopener noreferrer" class="item-link">04 Drive and GitHub Connection Tools</a></div>
+<div class="tree-row archive" data-folder data-label="05 drive administration and change history"><span class="branch" aria-hidden="true">│   └── </span><span class="folder-symbol" aria-hidden="true">▧</span> <a href="https://drive.google.com/drive/folders/1Hzj2rv3wu-rjKExO5JCRjnaZ3JSkgM4w" target="_blank" rel="noopener noreferrer" class="item-link">05 Drive Administration and Change History</a></div></div></details>
+<details id="repo-02" data-repo="jp-site-operations" open><summary class="tree-row repo-row"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <span class="repo-name">02 jp-site-operations</span><span class="mini-count">7 folders</span></summary>
+  <div class="repo-links"><span class="branch" aria-hidden="true">│   │   </span><a href="https://drive.google.com/drive/folders/1w5piZ3Pkn0NJ1JeQI-hCdowYGyFOx6BR" target="_blank" rel="noopener noreferrer">Drive</a><span>·</span><a href="https://github.com/FabinGurung/jp-site-operations" target="_blank" rel="noopener noreferrer">GitHub</a><span>·</span><a href="https://fabingurung.github.io/jp-site-operations/" target="_blank" rel="noopener noreferrer">Pages</a></div>
+  <div class="children"><div class="tree-row folder" data-folder data-label="01 live project map and notifications"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/1B5ORqVWFhV28KUuMWDKmqerzw2GjjNok" target="_blank" rel="noopener noreferrer" class="item-link">01 LIVE Project Map and Notifications</a></div>
+<div class="tree-row reference" data-folder data-label="02 project sections and location references"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▦</span> <a href="https://drive.google.com/drive/folders/1Mhmr1MMxW9mS5jyuCBX8VEA-D7hHZuKD" target="_blank" rel="noopener noreferrer" class="item-link">02 Project Sections and Location References</a></div>
+<div class="tree-row reference" data-folder data-label="03 instructions and semantic guides"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▦</span> <a href="https://drive.google.com/drive/folders/1EI-HAaZ7vTCBOO_H8VpDem4tkx30ptKA" target="_blank" rel="noopener noreferrer" class="item-link">03 Instructions and Semantic Guides</a></div>
+<div class="tree-row reference" data-folder data-label="04 messaging automation and control sources"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▦</span> <a href="https://drive.google.com/drive/folders/1IbqYCc7U4iD6-o-GLCsoQsLom3P22Web" target="_blank" rel="noopener noreferrer" class="item-link">04 Messaging Automation and Control Sources</a></div>
+<div class="tree-row folder" data-folder data-label="rohini engineering and builders"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/1fOCfPqCtv90FP6TvLbnjR43w02w1QeMt" target="_blank" rel="noopener noreferrer" class="item-link">Rohini Engineering and Builders</a></div>
+<div class="tree-row folder" data-folder data-label="fishtail builders"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/1pXW8OqqZ5I9TAVlbvGMq1RRwr1p2S5WN" target="_blank" rel="noopener noreferrer" class="item-link">Fishtail Builders</a></div>
+<div class="tree-row archive" data-folder data-label="90 command center design — reference only"><span class="branch" aria-hidden="true">│   └── </span><span class="folder-symbol" aria-hidden="true">▧</span> <a href="https://drive.google.com/drive/folders/1lEi1x8TkYmJ8AXYAlCNI9RC5fSf2nlGC" target="_blank" rel="noopener noreferrer" class="item-link">90 Command Center Design — Reference Only</a></div></div></details>
+<details id="repo-03" data-repo="jp-field-desk-library" open><summary class="tree-row repo-row"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <span class="repo-name">03 jp-field-desk-library</span><span class="mini-count">6 folders</span></summary>
+  <div class="repo-links"><span class="branch" aria-hidden="true">│   │   </span><a href="https://drive.google.com/drive/folders/19WXVNorL-9FjCMtYrCsgTBww88GVQHDE" target="_blank" rel="noopener noreferrer">Drive</a><span>·</span><a href="https://github.com/FabinGurung/jp-field-desk-library" target="_blank" rel="noopener noreferrer">GitHub</a><span>·</span><a href="https://fabingurung.github.io/jp-field-desk-library/" target="_blank" rel="noopener noreferrer">Pages</a></div>
+  <div class="children"><div class="tree-row folder" data-folder data-label="01 project resource and file registers"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/1iSXNHaPqXSHzAZ-tJyB16nGo4GFIINCN" target="_blank" rel="noopener noreferrer" class="item-link">01 Project Resource and File Registers</a></div>
+<div class="tree-row reference" data-folder data-label="02 fishtail project folder template and shared standards"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▦</span> <a href="https://drive.google.com/drive/folders/13Kq2BQGrha4wUHtJSc0Ye1VqHbr25lay" target="_blank" rel="noopener noreferrer" class="item-link">02 Fishtail Project Folder Template and Shared Standards</a></div>
+<div class="tree-row reference" data-folder data-label="03 document engineering and templates"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▦</span> <a href="https://drive.google.com/drive/folders/1C7jGFY-GvwqE4yVMB0C8XJjQiDjwjTsS" target="_blank" rel="noopener noreferrer" class="item-link">03 Document Engineering and Templates</a></div>
+<div class="tree-row folder" data-folder data-label="fishtail builders"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/1WsTKDv1MZyKn-g47TZW2tONkbaJ5gaWl" target="_blank" rel="noopener noreferrer" class="item-link">Fishtail Builders</a></div>
+<div class="tree-row folder" data-folder data-label="rohini engineering and builders"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/1jEkxGF8tXZJ4hqh2MwVEQl1NCEFgASZB" target="_blank" rel="noopener noreferrer" class="item-link">Rohini Engineering and Builders</a></div>
+<div class="tree-row folder" data-folder data-label="jp enterprise"><span class="branch" aria-hidden="true">│   └── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/16MzSlqbPQpZFV5C_KSxwmpTdX9HQEwwp" target="_blank" rel="noopener noreferrer" class="item-link">JP Enterprise</a></div></div></details>
+<details id="repo-04" data-repo="jp-estimating-and-boq" open><summary class="tree-row repo-row"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <span class="repo-name">04 jp-estimating-and-boq</span><span class="mini-count">6 folders</span></summary>
+  <div class="repo-links"><span class="branch" aria-hidden="true">│   │   </span><a href="https://drive.google.com/drive/folders/126AVR4iacXV3bwK8St66QrUFrYqlRtWS" target="_blank" rel="noopener noreferrer">Drive</a><span>·</span><a href="https://github.com/FabinGurung/jp-estimating-and-boq" target="_blank" rel="noopener noreferrer">GitHub</a><span>·</span><a href="https://fabingurung.github.io/jp-estimating-and-boq/" target="_blank" rel="noopener noreferrer">Pages</a></div>
+  <div class="children"><div class="tree-row publish" data-folder data-label="00 source index and publishing"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▤</span> <a href="https://drive.google.com/drive/folders/1vgb3a4k-GkgdPJWT3C_qy31T1B3QyF2o" target="_blank" rel="noopener noreferrer" class="item-link">00 Source Index and Publishing</a></div>
+<div class="tree-row reference" data-folder data-label="01 project funding and reference records"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▦</span> <a href="https://drive.google.com/drive/folders/1tDfNQYxflCacWHL3v0QhIoAQPUnf-GIO" target="_blank" rel="noopener noreferrer" class="item-link">01 Project Funding and Reference Records</a></div>
+<div class="tree-row archive" data-folder data-label="02 estimating sources and history"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▧</span> <a href="https://drive.google.com/drive/folders/1SVN58AJW1ulNbMUTndNrst4yTzht5Gyp" target="_blank" rel="noopener noreferrer" class="item-link">02 Estimating Sources and History</a></div>
+<div class="tree-row restricted" data-folder data-label="03 fishtail builders — restricted field records"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▣</span> <a href="https://drive.google.com/drive/folders/1shI43NWhlhvV0ef5q2_sNlXvKkAF2_WG" target="_blank" rel="noopener noreferrer" class="item-link">03 Fishtail Builders — Restricted Field Records</a></div>
+<div class="tree-row restricted" data-folder data-label="04 rohini engineering and builders — restricted field records"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▣</span> <a href="https://drive.google.com/drive/folders/1Wm9eDwhlrHrMiL6C7joMipTctYALc8O1" target="_blank" rel="noopener noreferrer" class="item-link">04 Rohini Engineering and Builders — Restricted Field Records</a></div>
+<div class="tree-row restricted" data-folder data-label="90 reviewed historical field records"><span class="branch" aria-hidden="true">│   └── </span><span class="folder-symbol" aria-hidden="true">▣</span> <a href="https://drive.google.com/drive/folders/1SPKRupmfOZSC2r7CC03mo_ekvQjDsWgR" target="_blank" rel="noopener noreferrer" class="item-link">90 Reviewed Historical Field Records</a></div></div></details>
+<details id="repo-05" data-repo="jp-scheduling-resources-management" open><summary class="tree-row repo-row"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <span class="repo-name">05 jp-scheduling-resources-management</span><span class="mini-count">5 folders</span></summary>
+  <div class="repo-links"><span class="branch" aria-hidden="true">│   │   </span><a href="https://drive.google.com/drive/folders/1HGw_OKAQobPCv2JW0j23eUqjBwlsJdpt" target="_blank" rel="noopener noreferrer">Drive</a><span>·</span><a href="https://github.com/FabinGurung/jp-scheduling-resources-management" target="_blank" rel="noopener noreferrer">GitHub</a><span>·</span><a href="https://fabingurung.github.io/jp-scheduling-resources-management/" target="_blank" rel="noopener noreferrer">Pages</a></div>
+  <div class="children"><div class="tree-row folder" data-folder data-label="01 project schedule sources"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/17SlBSjcmYM6RACD5HwRg7cyn4eYfc3qV" target="_blank" rel="noopener noreferrer" class="item-link">01 Project Schedule Sources</a></div>
+<div class="tree-row folder" data-folder data-label="02 resource library"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/1rrj00lOZQ8SA0boDRATpdom1d8jiviGS" target="_blank" rel="noopener noreferrer" class="item-link">02 Resource Library</a></div>
+<div class="tree-row reference" data-folder data-label="03 project registry and qa"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▦</span> <a href="https://drive.google.com/drive/folders/1ppLrcnH3G10X7yNDZd3eozHDU46JW8z3" target="_blank" rel="noopener noreferrer" class="item-link">03 Project Registry and QA</a></div>
+<div class="tree-row reference" data-folder data-label="04 project controls kernel"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▦</span> <a href="https://drive.google.com/drive/folders/1e75xsCpxO1o-YnIK6N5jHKlBvOO116zi" target="_blank" rel="noopener noreferrer" class="item-link">04 Project Controls Kernel</a></div>
+<div class="tree-row archive" data-folder data-label="99 archive and version history"><span class="branch" aria-hidden="true">│   └── </span><span class="folder-symbol" aria-hidden="true">▧</span> <a href="https://drive.google.com/drive/folders/1ypl3gTYYwkTuQOOU0I_QGoFWet9SQ7Z5" target="_blank" rel="noopener noreferrer" class="item-link">99 Archive and Version History</a></div></div></details>
+<details id="repo-06" data-repo="jp-drawing-coordination" open><summary class="tree-row repo-row"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <span class="repo-name">06 jp-drawing-coordination</span><span class="mini-count">5 folders</span></summary>
+  <div class="repo-links"><span class="branch" aria-hidden="true">│   │   </span><a href="https://drive.google.com/drive/folders/1cSQUHmVOntSJQWuoShbUuAnJ1i_Rb7qv" target="_blank" rel="noopener noreferrer">Drive</a><span>·</span><a href="https://github.com/FabinGurung/jp-drawing-coordination" target="_blank" rel="noopener noreferrer">GitHub</a><span>·</span><a href="https://fabingurung.github.io/jp-drawing-coordination/" target="_blank" rel="noopener noreferrer">Pages</a></div>
+  <div class="children"><div class="tree-row reference" data-folder data-label="01 shared drawing standards"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▦</span> <a href="https://drive.google.com/drive/folders/16dbAQXelgymaCavzMjMrJXtDJ9zMze6B" target="_blank" rel="noopener noreferrer" class="item-link">01 Shared Drawing Standards</a></div>
+<div class="tree-row folder" data-folder data-label="fishtail builders"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/1WNR_Qy2-VzJUtAHjrniixvTVSDBwFzRE" target="_blank" rel="noopener noreferrer" class="item-link">Fishtail Builders</a></div>
+<div class="tree-row folder" data-folder data-label="rohini engineering and builders"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/1wrtzdPtkD72GU6hhB8TEnii8_0e0iuLu" target="_blank" rel="noopener noreferrer" class="item-link">Rohini Engineering and Builders</a></div>
+<div class="tree-row folder" data-folder data-label="jp enterprise"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/1byq7iwerkn0eC6ncS6l0wIKNdGoqcUFc" target="_blank" rel="noopener noreferrer" class="item-link">JP Enterprise</a></div>
+<div class="tree-row archive" data-folder data-label="90 website and drawing archives"><span class="branch" aria-hidden="true">│   └── </span><span class="folder-symbol" aria-hidden="true">▧</span> <a href="https://drive.google.com/drive/folders/1nxbi45i8cyUeH3zBeIHubITGAtnRN8VH" target="_blank" rel="noopener noreferrer" class="item-link">90 Website and Drawing Archives</a></div></div></details>
+<details id="repo-07" data-repo="jp-structural-analysis" open><summary class="tree-row repo-row"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <span class="repo-name">07 jp-structural-analysis</span><span class="mini-count">4 folders</span></summary>
+  <div class="repo-links"><span class="branch" aria-hidden="true">│   │   </span><a href="https://drive.google.com/drive/folders/1KhjI1OF33VGS5F3kDBe5eg0_XWbA9bHe" target="_blank" rel="noopener noreferrer">Drive</a><span>·</span><a href="https://github.com/FabinGurung/jp-structural-analysis" target="_blank" rel="noopener noreferrer">GitHub</a><span>·</span><a href="https://fabingurung.github.io/jp-structural-analysis/" target="_blank" rel="noopener noreferrer">Pages</a></div>
+  <div class="children"><div class="tree-row archive" data-folder data-label="01 research qa and historical publications"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▧</span> <a href="https://drive.google.com/drive/folders/1ViudVSKVdDr7OPl-xFjJTankIDAEQJoO" target="_blank" rel="noopener noreferrer" class="item-link">01 Research QA and Historical Publications</a></div>
+<div class="tree-row folder" data-folder data-label="02 fishtail builders"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/1KyqZcDZQQp6IchYuCPgPuWWx413kfi7K" target="_blank" rel="noopener noreferrer" class="item-link">02 Fishtail Builders</a></div>
+<div class="tree-row folder" data-folder data-label="03 rohini engineering and builders"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/18_gXm9hfhBFeKsTlOaV0_L7r2ZyJYjzD" target="_blank" rel="noopener noreferrer" class="item-link">03 Rohini Engineering and Builders</a></div>
+<div class="tree-row publish" data-folder data-label="04 published website and report"><span class="branch" aria-hidden="true">│   └── </span><span class="folder-symbol" aria-hidden="true">▤</span> <a href="https://drive.google.com/drive/folders/1AKPXkBnj5WxQni99srH1DK4noGLig9uh" target="_blank" rel="noopener noreferrer" class="item-link">04 Published Website and Report</a></div></div></details>
+<details id="repo-08" data-repo="jp-research-lab" open><summary class="tree-row repo-row"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <span class="repo-name">08 jp-research-lab</span><span class="mini-count">2 folders</span></summary>
+  <div class="repo-links"><span class="branch" aria-hidden="true">│   │   </span><a href="https://drive.google.com/drive/folders/1LjQcjA9KQU7GvQLlhz6t1OFgIyjZWGId" target="_blank" rel="noopener noreferrer">Drive</a><span>·</span><a href="https://github.com/FabinGurung/jp-research-lab" target="_blank" rel="noopener noreferrer">GitHub</a><span>·</span><a href="https://fabingurung.github.io/jp-research-lab/" target="_blank" rel="noopener noreferrer">Pages</a></div>
+  <div class="children"><div class="tree-row folder" data-folder data-label="01 enterprise documents"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/1J4DnCmgErFixlFaciWTGmTEWZ3CWJ_zg" target="_blank" rel="noopener noreferrer" class="item-link">01 Enterprise Documents</a></div>
+<div class="tree-row reference" data-folder data-label="02 academic writing"><span class="branch" aria-hidden="true">│   └── </span><span class="folder-symbol" aria-hidden="true">▦</span> <a href="https://drive.google.com/drive/folders/1B-pRF_PM3UPEb9-D_1KmVT1OEt1jtQ6q" target="_blank" rel="noopener noreferrer" class="item-link">02 Academic Writing</a></div></div></details>
+<details id="repo-09" data-repo="jp-study-hub" open><summary class="tree-row repo-row"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <span class="repo-name">09 jp-study-hub</span><span class="mini-count">4 folders</span></summary>
+  <div class="repo-links"><span class="branch" aria-hidden="true">│   │   </span><a href="https://drive.google.com/drive/folders/1q7mPV7RRhZYQzUM2MvLN5OdHjFADoFHA" target="_blank" rel="noopener noreferrer">Drive</a><span>·</span><a href="https://github.com/FabinGurung/jp-study-hub" target="_blank" rel="noopener noreferrer">GitHub</a><span>·</span><a href="https://fabingurung.github.io/jp-study-hub/" target="_blank" rel="noopener noreferrer">Pages</a></div>
+  <div class="children"><div class="tree-row folder" data-folder data-label="01 msc structural engineering"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/10vmHOd4wlJDfp6qs6JEqwbFwmTJW98Id" target="_blank" rel="noopener noreferrer" class="item-link">01 MSc Structural Engineering</a></div>
+<div class="tree-row folder" data-folder data-label="02 msc construction management"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/16IvOZeNidPZz3LekAclfGP0GolJaBl2C" target="_blank" rel="noopener noreferrer" class="item-link">02 MSc Construction Management</a></div>
+<div class="tree-row folder" data-folder data-label="03 professional engineering and competitive exams"><span class="branch" aria-hidden="true">│   ├── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/1SrCyfQFgRijosKFRh2ICXOYZ8U4XU4h_" target="_blank" rel="noopener noreferrer" class="item-link">03 Professional Engineering and Competitive Exams</a></div>
+<div class="tree-row folder" data-folder data-label="04 extraction runs"><span class="branch" aria-hidden="true">│   └── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/1DfMa5loPZ1vKta2lWgL1WbUfs4z1DjHi" target="_blank" rel="noopener noreferrer" class="item-link">04 Extraction Runs</a></div></div></details>
+<details id="repo-10" data-repo="data-warehouse-random" open><summary class="tree-row repo-row"><span class="branch" aria-hidden="true">│   └── </span><span class="folder-symbol" aria-hidden="true">▰</span> <span class="repo-name">10 data-warehouse-random</span><span class="mini-count">1 folders</span></summary>
+  <div class="repo-links"><span class="branch" aria-hidden="true">│       </span><a href="https://drive.google.com/drive/folders/1q0VpM43s4lZsbjZNLqYVNVMrqL5YPsHC" target="_blank" rel="noopener noreferrer">Drive</a><span>·</span><a href="https://github.com/FabinGurung/data-warehouse-random" target="_blank" rel="noopener noreferrer">GitHub</a><span>·</span><a href="https://fabingurung.github.io/data-warehouse-random/" target="_blank" rel="noopener noreferrer">Pages</a></div>
+  <div class="children"><div class="tree-row folder" data-folder data-label="01 paila pilates — operational source pointer"><span class="branch" aria-hidden="true">    └── </span><span class="folder-symbol" aria-hidden="true">▰</span> <a href="https://drive.google.com/drive/folders/1kylwj3F9XYug_ZOiINrOod6yJ3PuzgQ9" target="_blank" rel="noopener noreferrer" class="item-link">01 Paila Pilates — Operational Source Pointer</a></div></div></details>
+<div class="tree-row archive" ><span class="branch" aria-hidden="true">└── </span><span class="folder-symbol" aria-hidden="true">▧</span> <a href="https://drive.google.com/drive/folders/1cbxS2fjSSZN6-4SL_d3oUk5C-lcHJ65a" target="_blank" rel="noopener noreferrer" class="item-link">99 Archive Gallery</a></div></section>
+    <div class="notice"><strong>Scope:</strong> This published tree includes the verified 01_JP root, ten repository roots, and 45 first-level subfolders. Deeper original-file inventory is maintained separately in signed-in Drive; it is not publicly exposed or asserted complete here. A folder link does not imply its files are publicly accessible or imported by GitHub Actions.</div>
+    <div class="footer">
+      <a href="https://drive.google.com/drive/folders/13aseDFRfY_SI_YC6X71K_EZ_XjnAorFp" target="_blank" rel="noopener noreferrer">Open 01_JP Drive root</a>
+      <a href="https://docs.google.com/document/d/1h-1tHUsw8d5GFSMTV1X5JFFERAYeK4jMylp9-nw-jlc/edit" target="_blank" rel="noopener noreferrer">Read repository directory</a>
+      <a href="https://fabingurung.github.io/jp-a7-system-registry/" target="_blank" rel="noopener noreferrer">A7 registry</a>
+    </div>
   </main>
-  <aside class="detail-rail" id="inspector" aria-labelledby="inspectorHeading">
-    <div class="detail-header">
-      <div class="kicker">03 / Source inspector</div><h2 id="inspectorHeading">Selected station</h2>
-      <div class="selected-orbit">
-        <div class="selected-symbol" id="selectedSymbol">JP</div>
-        <div><strong id="selectedTitle">01_JP Source Directory</strong><small id="selectedSub">Loading…</small></div>
-      </div>
-      <p id="selectedDescription" class="detail-description">Choose a repository node to see its original source locations.</p>
-      <div id="inspectorActions" class="action-links"></div>
-      <div id="trail" class="context-trail"></div>
-    </div>
-    <div class="folder-head"><h3>Verified Drive folders</h3><span class="count-bubble" id="folderCount">—</span></div>
-    <div class="folder-stack" id="folderList"><div class="empty-state">Loading source categories…</div></div>
-    <div class="inspector-note"><strong>Access is governed at the original source.</strong> These links open Google Drive with existing sharing controls. A repository folder does not establish that its files are publicly readable or imported by GitHub Actions. Nested file census and approval checks remain in signed-in Drive.</div>
-  </aside>
 </div>
-<noscript><p style="padding:20px">This explorer requires JavaScript to display the radar. Open the original <a href="https://drive.google.com/drive/folders/13aseDFRfY_SI_YC6X71K_EZ_XjnAorFp">01_JP Drive folder</a> instead.</p></noscript>
+<script>
+"use strict";
+const input=document.getElementById("treeSearch");
+const blocks=[...document.querySelectorAll("details[data-repo]")];
+const status=document.getElementById("resultStatus");
+function applyFilter(){
+ const q=input.value.trim().toLowerCase();
+ let visibleRepositories=0,visibleFolders=0;
+ for(const detail of blocks){
+  const repoMatches=detail.dataset.repo.toLowerCase().includes(q);
+  const folders=[...detail.querySelectorAll("[data-folder]")];
+  let currentFolderCount=0;
+  for(const folder of folders){
+   const match=!q||repoMatches||folder.dataset.label.includes(q);
+   folder.dataset.hidden=String(!match);
+   if(match)currentFolderCount++;
+  }
+  const matches=!q||repoMatches||currentFolderCount>0;
+  detail.dataset.hidden=String(!matches);
+  if(matches){visibleRepositories++;visibleFolders+=currentFolderCount;}
+  if(q&&matches)detail.open=true;
+ }
+ status.textContent="Showing "+visibleRepositories+" repositories and "+visibleFolders+" direct folders";
+}
+input.addEventListener("input",applyFilter);
+document.getElementById("expandAll").addEventListener("click",()=>blocks.forEach(x=>x.open=true));
+document.getElementById("collapseAll").addEventListener("click",()=>blocks.forEach(x=>x.open=false));
+document.getElementById("clearSearch").addEventListener("click",()=>{input.value="";applyFilter();blocks.forEach(x=>x.open=true);});
+</script>
 </body>
 </html>
