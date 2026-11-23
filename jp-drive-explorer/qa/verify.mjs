@@ -11,7 +11,7 @@ assert.equal(manifest.is_live_sync,false);
 assert.equal(manifest.repositories.length,10);
 assert.equal(manifest.repositories.reduce((n,r)=>n+r.folders.length,0),45);
 assert.equal((html.match(/data-repo="/g)||[]).length,10);
-assert.equal((html.match(/data-folder(?![a-z])/g)||[]).length,45);
+assert.equal((html.match(/data-folder data-label=/g)||[]).length,45);
 for(const r of manifest.repositories){
  assert.ok(html.includes("https://drive.google.com/drive/folders/"+r.drive_id));
  assert.ok(html.includes("https://github.com/FabinGurung/"+r.name));
