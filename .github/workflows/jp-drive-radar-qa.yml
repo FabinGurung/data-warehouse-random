@@ -1,10 +1,11 @@
-name: JP Source Folder Tree — Public Directory QA
+name: JP Source Folder Tree and Trial Gallery — QA
 on:
   push:
     branches:
       - gis-site-selection
     paths:
       - 'jp-drive-explorer/**'
+      - 'jp-trials/**'
       - '.github/workflows/jp-drive-radar-qa.yml'
   workflow_dispatch:
 
@@ -23,6 +24,8 @@ jobs:
           node-version: '22'
       - name: Light-tree syntax, source manifest and navigation QA
         run: node jp-drive-explorer/qa/verify.mjs
+      - name: Verify archived trials and draggable 3D gallery
+        run: node jp-trials/qa/verify.mjs
       - name: Preserve independent original prototype
         run: |
           test -s index.html
