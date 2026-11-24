@@ -1,0 +1,60 @@
+name: New Laxmi Rate demo refresh
+on:
+  workflow_dispatch:
+    inputs:
+      products_csv:
+        description: 'Optional products CSV exported from the demo Sheet (exact seven headers)'
+        required: false
+        type: string
+      categories_csv:
+        description: 'Optional categories CSV (name,subcategories)'
+        required: false
+        type: string
+      publish:
+        description: 'Commit validated public DEMO snapshot to selected Pages branch'
+        required: true
+        default: false
+        type: boolean
+  push:
+    paths:
+      - 'new-laxmi-rate/**'
+      - '.github/workflows/new-laxmi-rate-demo.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.publish && 'gis-site-selection' || github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install read-only Google client
+        run: python -m pip install google-auth requests
+      - name: Validate or refresh public demo snapshot
+        env:
+          PRODUCTS_CSV: ${{ github.event_name == 'workflow_dispatch' && inputs.products_csv || '' }}
+          CATEGORIES_CSV: ${{ github.event_name == 'workflow_dispatch' && inputs.categories_csv || '' }}
+          LAXMI_SHEETS_CREDENTIALS: ${{ github.event_name == 'workflow_dispatch' && secrets.LAXMI_SHEETS_CREDENTIALS || '' }}
+          LAXMI_SHEET_ID: ${{ vars.LAXMI_SHEET_ID }}
+        run: python new-laxmi-rate/refresh.py
+      - name: JavaScript syntax check
+        run: node --check new-laxmi-rate/app.js
+      - uses: actions/upload-artifact@v4
+        with:
+          name: new-laxmi-rate-demo
+          path: new-laxmi-rate/
+      - name: Update published branch snapshot
+        if: github.event_name == 'workflow_dispatch' && inputs.publish
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add new-laxmi-rate/catalogue.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Refresh validated New Laxmi Rate DEMO snapshot"
+          git push origin HEAD:gis-site-selection
+          echo "Snapshot committed. Branch-based Pages may require a separate deployment trigger." >> "$GITHUB_STEP_SUMMARY"
