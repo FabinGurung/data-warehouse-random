@@ -1,0 +1,82 @@
+{
+  "mode": "DEMO",
+  "products": [
+    {
+      "Article": "DEMO-001",
+      "Name": "Classic cotton shirt",
+      "Category": "Men",
+      "Subcategory": "Shirts",
+      "Wholesale": 850,
+      "Retail": 1200,
+      "ImageUrl": ""
+    },
+    {
+      "Article": "DEMO-002",
+      "Name": "Casual denim jeans",
+      "Category": "Men",
+      "Subcategory": "Jeans",
+      "Wholesale": 1350,
+      "Retail": 1890,
+      "ImageUrl": ""
+    },
+    {
+      "Article": "DEMO-003",
+      "Name": "Linen kurti",
+      "Category": "Women",
+      "Subcategory": "Kurtis",
+      "Wholesale": 950,
+      "Retail": 1450,
+      "ImageUrl": ""
+    },
+    {
+      "Article": "DEMO-004",
+      "Name": "Printed scarf",
+      "Category": "Women",
+      "Subcategory": "Accessories",
+      "Wholesale": 300,
+      "Retail": 490,
+      "ImageUrl": ""
+    },
+    {
+      "Article": "DEMO-005",
+      "Name": "Cotton T-shirt",
+      "Category": "Kids",
+      "Subcategory": "T-shirts",
+      "Wholesale": 350,
+      "Retail": 550,
+      "ImageUrl": ""
+    },
+    {
+      "Article": "DEMO-006",
+      "Name": "Kids denim shorts",
+      "Category": "Kids",
+      "Subcategory": "Shorts",
+      "Wholesale": 520,
+      "Retail": 790,
+      "ImageUrl": ""
+    }
+  ],
+  "categories": [
+    {
+      "name": "Men",
+      "subcategories": [
+        "Shirts",
+        "Jeans"
+      ]
+    },
+    {
+      "name": "Women",
+      "subcategories": [
+        "Kurtis",
+        "Accessories"
+      ]
+    },
+    {
+      "name": "Kids",
+      "subcategories": [
+        "T-shirts",
+        "Shorts"
+      ]
+    }
+  ]
+}
