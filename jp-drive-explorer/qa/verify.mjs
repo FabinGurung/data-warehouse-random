@@ -1,31 +1,10 @@
-import assert from "node:assert/strict";
-import {Script} from "node:vm";
-import {readFileSync} from "node:fs";
-import {dirname,join} from "node:path";
-import {fileURLToPath} from "node:url";
-const root=dirname(dirname(fileURLToPath(import.meta.url)));
-const html=readFileSync(join(root,"index.html"),"utf8");
-const manifest=JSON.parse(readFileSync(join(root,"data/approved-roots.json"),"utf8"));
-assert.equal(manifest.schema,"jp-drive-radar/1.0"); // Historical manifest contract retained; UI is now a plain tree.
-const inlineScript=html.match(/<script>([\s\S]*?)<\/script>/)?.[1];
-assert.ok(inlineScript,"Source tree interactions missing");
-new Script(inlineScript,{filename:"jp-drive-explorer/index.html"});
-assert.equal(manifest.public_projection,true);
-assert.equal(manifest.is_live_sync,false);
-assert.equal(manifest.repositories.length,10);
-assert.equal(manifest.repositories.reduce((n,r)=>n+r.folders.length,0),45);
-assert.equal((html.match(/data-repo="/g)||[]).length,10);
-assert.equal((html.match(/data-folder data-label=/g)||[]).length,45);
-for(const r of manifest.repositories){
- assert.ok(html.includes("https://drive.google.com/drive/folders/"+r.drive_id));
- assert.ok(html.includes("https://github.com/FabinGurung/"+r.name));
- for(const f of r.folders)assert.ok(html.includes("https://drive.google.com/drive/folders/"+f.drive_id));
-}
-for(const term of ["--bg:#f5f8fc","--repo:#1967b3","--folder:#147d53","--restricted:#a15b15","--archive:#617285",
-  "treeSearch","expandAll","collapseAll","clearSearch","<details","<summary","color indicates","01_JP — Folder Tree"]){
- assert.ok(html.toLowerCase().includes(term.toLowerCase()),"Missing "+term);
-}
-assert.ok(!html.includes('src="radar.js"'));
-assert.ok(!html.includes('href="radar.css"'));
-assert.ok(!html.includes("Private financial records"));
-console.log("01_JP light-color tree QA PASS: 10 owner roots, 45 source folders, preserving all exact Drive links.");
+import {readFileSync,existsSync} from 'node:fs';import {Script} from 'node:vm';import assert from 'node:assert/strict';
+const read=f=>readFileSync(f,'utf8');
+const h=read('jp-drive-explorer/index.html'),m=JSON.parse(read('jp-drive-explorer/data/approved-roots.json'));
+assert.match(h,/Google Docs &amp; Sheets tree/);assert.match(h,/input type="file"/);assert.match(h,/Google Docs only/);assert.match(h,/Google Sheets only/);assert.match(h,/Include history \/ archives/);assert.match(h,/processed in your browser/);assert.match(h,/<script type="application\/json" id="embedded-data"><\/script>/);
+for(const [,code] of h.matchAll(/<script(?: [^>]*)?>([\s\S]*?)<\/script>/g))if(code.trim())new Script(code);
+assert.equal(m.repositories.length,10);assert.equal(m.repositories.reduce((a,r)=>a+r.folders.length,0),47);assert.equal(m.is_live_sync,false);assert.equal(m.public_projection,true);
+for(const p of ['zoom-pan','spider-radar','drive-gallery'])assert.match(read('jp-trials/'+p+'/index.html'),/no longer an active website trial/);
+assert.match(read('index.html'),/href="jp-drive-explorer\/"/);assert.doesNotMatch(read('index.html'),/Browse 3D trial gallery/);assert.ok(existsSync('gis/index.html'));
+assert.match(read('jp-trials/index.html'),/six-card gallery has been retired/);assert.doesNotMatch(read('source-gallery.js'),/attachShadow/);
+console.log('OK: document-first tree, local-only private inventory, 10 repo roots / 47 folders, retired routes and preserved independent views.');

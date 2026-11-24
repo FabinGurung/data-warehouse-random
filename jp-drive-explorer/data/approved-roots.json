@@ -1,8 +1,8 @@
 {
   "schema": "jp-drive-radar/1.0",
-  "snapshot_date": "2026-11-23",
-  "scope": "Approved 01_JP repository roots and first-level Drive categories only; no private file metadata",
-  "source": "Live Google Drive parent/child metadata verified 2026-11-23",
+  "snapshot_date": "2026-11-24",
+  "scope": "Repository roots and immediate approved folder categories only; private file names are loaded locally by the signed-in user.",
+  "source": "Verified 23 November source categories and the two sandbox folders created on 24 November",
   "is_live_sync": false,
   "public_projection": true,
   "root": {
@@ -325,6 +325,16 @@
           "id": "JP-10-01",
           "name": "01 Paila Pilates — Operational Source Pointer",
           "drive_id": "1kylwj3F9XYug_ZOiINrOod6yJ3PuzgQ9"
+        },
+        {
+          "id": "JP-10-02",
+          "name": "02 Signed-In Document Explorer",
+          "drive_id": "15Max6AuxuupxmKFIof0dzRjweTZkwstY"
+        },
+        {
+          "id": "JP-10-90",
+          "name": "90 Archived Website Trials",
+          "drive_id": "1JXI9EANqEuk_kWFkzGafEWPdkOIApI5q"
         }
       ]
     }
