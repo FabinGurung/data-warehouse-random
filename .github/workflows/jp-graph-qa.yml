@@ -1,0 +1,24 @@
+name: JP Atlas graph QA
+on:
+  push:
+    branches: [gis-site-selection]
+    paths:
+      - 'jp-graph/**'
+      - '.github/workflows/jp-graph-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  graph-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node jp-graph/qa/verify.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jp-atlas-graph-source
+          path: jp-graph/
+          retention-days: 30
