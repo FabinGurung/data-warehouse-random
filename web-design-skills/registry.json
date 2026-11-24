@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "owner": "FabinGurung/data-warehouse-random",
+  "source_revision": "e7df6eb7124095d6c7fbc71c8909f8896d061850",
+  "drive_guide": "https://docs.google.com/document/d/1PIf2Yli7qjadxkG0TVCSRv43PjAhFVJcazNAQIyx6Dc/edit",
+  "library": {
+    "name": "Three.js",
+    "revision": "r149",
+    "path": "assets/three.min.js",
+    "license": "assets/Three-LICENSE.txt",
+    "blob_sha": "4494cf4e8d37049896b6051da6edfe44a83355af"
+  },
+  "skills": [
+    {
+      "id": "WDS-3D-001",
+      "slug": "hover-particle-dissolve",
+      "title": "Hover particle dissolve",
+      "category": "3D / interaction",
+      "source": "https://github.com/MengTo/Skills/tree/e7df6eb7124095d6c7fbc71c8909f8896d061850/agent-skills/3d/hover-particle-dissolve",
+      "license": "MIT",
+      "skill": "hover-particle-dissolve/SKILL.md",
+      "prompt": "hover-particle-dissolve/demo/PROMPT.md",
+      "demo": "hover-particle-dissolve/demo/index.html",
+      "interaction": "Pointer hit dissolves the torus into grains; leave to reform.",
+      "accessibility": "Keyboard preview and reduced-motion static model",
+      "runtime": "Three.js r149 / WebGL",
+      "status": "imported; browser interaction QA pending",
+      "source_blob_sha": "1be3569eaa806464ff30cb5ae613308a2f8ccb10",
+      "demo_source_blob_sha": "d29d10155ba091c89ba8bf45bb4117d127cc4908"
+    },
+    {
+      "id": "WDS-3D-002",
+      "slug": "3d-feature-objects",
+      "title": "3D feature objects",
+      "category": "3D / interaction",
+      "source": "https://github.com/MengTo/Skills/tree/e7df6eb7124095d6c7fbc71c8909f8896d061850/agent-skills/3d/3d-feature-objects",
+      "license": "MIT",
+      "skill": "3d-feature-objects/SKILL.md",
+      "prompt": "3d-feature-objects/demo/PROMPT.md",
+      "demo": "3d-feature-objects/demo/index.html",
+      "interaction": "Hover turns lit gauge, meter and probe; leave to settle.",
+      "accessibility": "Turn buttons and reduced-motion explicit steps",
+      "runtime": "Three.js r149 / WebGL",
+      "status": "imported; browser interaction QA pending",
+      "source_blob_sha": "2a85917dca1b531edb3daa270f9fa07febeb1e4d",
+      "demo_source_blob_sha": "6c7cb07c3f21dcda83b625449579b07197c4a4ed"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+name: Web Design Skills QA
+on:
+  push:
+    paths:
+      - 'web-design-skills/**'
+      - '.github/workflows/web-design-skills-qa.yml'
+  pull_request:
+    paths:
+      - 'web-design-skills/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node web-design-skills/verify.mjs
