@@ -1,0 +1,42 @@
+name: Preserve retired website trial source archives
+on:
+  push:
+    branches: [gis-site-selection]
+    paths:
+      - '.github/workflows/archive-retired-trials.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Stage exact source and provenance
+        run: |
+          set -euo pipefail
+          mkdir -p "${RUNNER_TEMP}/jp-archives/01-zoom-pan" "${RUNNER_TEMP}/jp-archives/02-spider-radar" "${RUNNER_TEMP}/jp-archives/03-curved-drive-sources/jp-trials/drive-gallery"
+          git show e1615d0:jp-trials/zoom-pan/index.html > "${RUNNER_TEMP}/jp-archives/01-zoom-pan/index.html"
+          git archive e1615d0 jp-trials/spider-radar | tar -x -C "${RUNNER_TEMP}/jp-archives/02-spider-radar"
+          git show e1615d0:jp-trials/drive-gallery/index.html > "${RUNNER_TEMP}/jp-archives/03-curved-drive-sources/jp-trials/drive-gallery/index.html"
+          git show e1615d0:source-gallery.js > "${RUNNER_TEMP}/jp-archives/03-curved-drive-sources/source-gallery.js"
+          for trial in 01-zoom-pan 02-spider-radar 03-curved-drive-sources; do
+            printf '%s\n' "Retired design; preserve original source and do not present as active." "Repository: FabinGurung/data-warehouse-random" "Source commit: e1615d072211aef85c982fc30c62d404d8bc7bf4" "Original source has been preserved, including historical dated manifest where applicable." > "${RUNNER_TEMP}/jp-archives/$trial/README.txt"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 01-zoom-pan-source
+          path: ${{ runner.temp }}/jp-archives/01-zoom-pan/
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 02-spider-radar-source
+          path: ${{ runner.temp }}/jp-archives/02-spider-radar/
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 03-curved-drive-sources
+          path: ${{ runner.temp }}/jp-archives/03-curved-drive-sources/
+          retention-days: 30
