@@ -1,82 +1,59 @@
 {
-  "mode": "DEMO",
+  "mode": "SAMPLE",
   "products": [
     {
-      "Article": "DEMO-001",
-      "Name": "Classic cotton shirt",
-      "Category": "Men",
-      "Subcategory": "Shirts",
-      "Wholesale": 850,
-      "Retail": 1200,
-      "ImageUrl": ""
+      "Item Name": "Classic cotton shirt",
+      "EXIM Code": "",
+      "Description": "Men — Shirts",
+      "Rate": null,
+      "Wholesale Value": 850,
+      "Retail Value": 1200,
+      "Photo": ""
     },
     {
-      "Article": "DEMO-002",
-      "Name": "Casual denim jeans",
-      "Category": "Men",
-      "Subcategory": "Jeans",
-      "Wholesale": 1350,
-      "Retail": 1890,
-      "ImageUrl": ""
+      "Item Name": "Casual denim jeans",
+      "EXIM Code": "",
+      "Description": "Men — Jeans",
+      "Rate": null,
+      "Wholesale Value": 1350,
+      "Retail Value": 1890,
+      "Photo": ""
     },
     {
-      "Article": "DEMO-003",
-      "Name": "Linen kurti",
-      "Category": "Women",
-      "Subcategory": "Kurtis",
-      "Wholesale": 950,
-      "Retail": 1450,
-      "ImageUrl": ""
+      "Item Name": "Linen kurti",
+      "EXIM Code": "",
+      "Description": "Women — Kurtis",
+      "Rate": null,
+      "Wholesale Value": 950,
+      "Retail Value": 1450,
+      "Photo": ""
     },
     {
-      "Article": "DEMO-004",
-      "Name": "Printed scarf",
-      "Category": "Women",
-      "Subcategory": "Accessories",
-      "Wholesale": 300,
-      "Retail": 490,
-      "ImageUrl": ""
+      "Item Name": "Printed scarf",
+      "EXIM Code": "",
+      "Description": "Women — Accessories",
+      "Rate": null,
+      "Wholesale Value": 300,
+      "Retail Value": 490,
+      "Photo": ""
     },
     {
-      "Article": "DEMO-005",
-      "Name": "Cotton T-shirt",
-      "Category": "Kids",
-      "Subcategory": "T-shirts",
-      "Wholesale": 350,
-      "Retail": 550,
-      "ImageUrl": ""
+      "Item Name": "Cotton T-shirt",
+      "EXIM Code": "",
+      "Description": "Kids — T-shirts",
+      "Rate": null,
+      "Wholesale Value": 350,
+      "Retail Value": 550,
+      "Photo": ""
     },
     {
-      "Article": "DEMO-006",
-      "Name": "Kids denim shorts",
-      "Category": "Kids",
-      "Subcategory": "Shorts",
-      "Wholesale": 520,
-      "Retail": 790,
-      "ImageUrl": ""
-    }
-  ],
-  "categories": [
-    {
-      "name": "Men",
-      "subcategories": [
-        "Shirts",
-        "Jeans"
-      ]
-    },
-    {
-      "name": "Women",
-      "subcategories": [
-        "Kurtis",
-        "Accessories"
-      ]
-    },
-    {
-      "name": "Kids",
-      "subcategories": [
-        "T-shirts",
-        "Shorts"
-      ]
+      "Item Name": "Kids denim shorts",
+      "EXIM Code": "",
+      "Description": "Kids — Shorts",
+      "Rate": null,
+      "Wholesale Value": 520,
+      "Retail Value": 790,
+      "Photo": ""
     }
   ]
 }
