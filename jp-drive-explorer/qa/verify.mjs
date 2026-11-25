@@ -1,0 +1,10 @@
+import {readFileSync,existsSync} from 'node:fs';import {Script} from 'node:vm';import assert from 'node:assert/strict';
+const read=f=>readFileSync(f,'utf8');
+const h=read('jp-drive-explorer/index.html'),m=JSON.parse(read('jp-drive-explorer/data/approved-roots.json'));
+assert.match(h,/Google Docs &amp; Sheets tree/);assert.match(h,/input type="file"/);assert.match(h,/Google Docs only/);assert.match(h,/Google Sheets only/);assert.match(h,/Include history \/ archives/);assert.match(h,/processed in your browser/);assert.match(h,/<script type="application\/json" id="embedded-data"><\/script>/);
+for(const [,code] of h.matchAll(/<script(?: [^>]*)?>([\s\S]*?)<\/script>/g))if(code.trim())new Script(code);
+assert.equal(m.repositories.length,10);assert.equal(m.repositories.reduce((a,r)=>a+r.folders.length,0),47);assert.equal(m.is_live_sync,false);assert.equal(m.public_projection,true);
+for(const p of ['zoom-pan','spider-radar','drive-gallery'])assert.match(read('jp-trials/'+p+'/index.html'),/no longer an active website trial/);
+assert.match(read('index.html'),/href="jp-drive-explorer\/"/);assert.doesNotMatch(read('index.html'),/Browse 3D trial gallery/);assert.ok(existsSync('gis/index.html'));
+assert.match(read('jp-trials/index.html'),/six-card gallery has been retired/);assert.doesNotMatch(read('source-gallery.js'),/attachShadow/);
+console.log('OK: document-first tree, local-only private inventory, 10 repo roots / 47 folders, retired routes and preserved independent views.');

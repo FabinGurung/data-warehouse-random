@@ -1,0 +1,23 @@
+name: Sandbox Launcher QA
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'pilates.html'
+      - 'sandbox-experiments.json'
+      - 'assets/css/sandbox-home.css'
+      - 'assets/js/shared.js'
+      - 'tools/verify-sandbox.mjs'
+      - '.github/workflows/sandbox-launcher-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tools/verify-sandbox.mjs

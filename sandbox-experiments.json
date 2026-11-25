@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "owner": "FabinGurung/data-warehouse-random",
+  "active": [
+    {
+      "id": "pilates",
+      "kind": "Business prototype",
+      "title": "Paila Pilates",
+      "description": "Studio website, classes, memberships and booking experience.",
+      "href": "pilates.html",
+      "theme": "pilates"
+    },
+    {
+      "id": "laxmi",
+      "kind": "Business prototype",
+      "title": "New Laxmi Store",
+      "description": "Orange-and-white clothing catalogue with searchable retail and wholesale rates.",
+      "href": "new-laxmi-rate/",
+      "theme": "laxmi"
+    },
+    {
+      "id": "gis",
+      "kind": "Location intelligence",
+      "title": "Pilates GIS",
+      "description": "Site-selection maps, location screening and comparative property analysis.",
+      "href": "gis/",
+      "theme": "gis"
+    },
+    {
+      "id": "atlas",
+      "kind": "System exploration",
+      "title": "JP Atlas",
+      "description": "Interactive knowledge graph with connected nodes and navigable relationships.",
+      "href": "jp-graph/",
+      "theme": "atlas"
+    },
+    {
+      "id": "tree",
+      "kind": "System exploration",
+      "title": "JP Document Tree",
+      "description": "Browse the hierarchy of Google Docs and Sheets, organized by repository.",
+      "href": "jp-drive-explorer/",
+      "theme": "tree"
+    },
+    {
+      "id": "skills",
+      "kind": "Design laboratory",
+      "title": "Web Design Skills",
+      "description": "Reusable 3D interaction examples, implementation instructions and design patterns.",
+      "href": "web-design-skills/",
+      "theme": "skills"
+    }
+  ],
+  "archive": "jp-trials/",
+  "notes": "Private client submissions are not linked or stored in public repository. Retired experiments remain archived."
+}
