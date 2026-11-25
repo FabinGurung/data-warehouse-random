@@ -130,12 +130,12 @@
         ${announcementHidden ? "" : `<div class="announcement" id="announcementBar"><span>${site.announcement || ""}</span><button type="button" aria-label="Close announcement" id="closeAnnouncement">×</button></div>`}
         <header class="site-header">
           <div class="container nav-shell">
-            <a class="brand" href="${path("index.html")}" aria-label="${site.brandName} home">
+            <a class="brand" href="${path("pilates.html")}" aria-label="${site.brandName} home">
               <img src="${path("assets/images/logo-mark.svg")}" alt="" width="44" height="44">
               <span class="brand-copy"><strong>${site.brandName}</strong><span>${site.city}</span></span>
             </a>
             <nav class="desktop-nav" aria-label="Primary navigation">
-              ${navLink(path("index.html"), "Home", "home", page)}
+              ${navLink(path("pilates.html"), "Home", "home", page)}
               ${navLink(path("schedule.html"), "Schedule", "schedule", page)}
               ${navLink(path("passes.html"), "Passes", "passes", page)}
               ${navLink(path("instructors.html"), "Instructors", "instructors", page)}
@@ -153,7 +153,7 @@
         <aside class="drawer" id="mobileDrawer" aria-hidden="true">
           <div class="drawer-head"><strong>${site.brandName}</strong><button class="drawer-close" id="drawerClose" type="button" aria-label="Close menu">×</button></div>
           <nav class="drawer-links" aria-label="Mobile navigation">
-            ${navLink(path("index.html"), "Home", "home", page)}
+            ${navLink(path("pilates.html"), "Home", "home", page)}
             ${navLink(path("schedule.html"), "Schedule", "schedule", page)}
             ${navLink(path("passes.html"), "Purchase a pass", "passes", page)}
             ${navLink(path("instructors.html"), "Instructors", "instructors", page)}
@@ -174,7 +174,7 @@
           <div class="container">
             <div class="footer-grid">
               <div class="footer-brand">
-                <a class="brand" href="${path("index.html")}" style="color:white">
+                <a class="brand" href="${path("pilates.html")}" style="color:white">
                   <img src="${path("assets/images/logo-mark.svg")}" alt="" width="44" height="44">
                   <span class="brand-copy"><strong>${site.brandName}</strong><span style="color:rgba(255,255,255,.58)">${site.city}</span></span>
                 </a>
