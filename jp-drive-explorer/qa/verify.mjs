@@ -6,5 +6,6 @@ for(const [,code] of h.matchAll(/<script(?: [^>]*)?>([\s\S]*?)<\/script>/g))if(c
 assert.equal(m.repositories.length,10);assert.equal(m.repositories.reduce((a,r)=>a+r.folders.length,0),47);assert.equal(m.is_live_sync,false);assert.equal(m.public_projection,true);
 for(const p of ['zoom-pan','spider-radar','drive-gallery'])assert.match(read('jp-trials/'+p+'/index.html'),/no longer an active website trial/);
 assert.match(read('index.html'),/href="jp-drive-explorer\/"/);assert.doesNotMatch(read('index.html'),/Browse 3D trial gallery/);assert.ok(existsSync('gis/index.html'));
-assert.match(read('jp-trials/index.html'),/six-card gallery has been retired/);assert.doesNotMatch(read('source-gallery.js'),/attachShadow/);
+assert.match(read('jp-trials/index.html'),/six-card gallery has been retired/);assert.ok(!existsSync('source-gallery.js'),'Retired source-gallery code must be archived, not deployed');
+for(const p of ['index.html','pilates.html','about.html','contact.html','instructors.html','member.html','passes.html','schedule.html','tools/data-editor.html','gis/index.html'])assert.doesNotMatch(read(p),/data-jp-source-gallery|source-gallery\.js/);
 console.log('OK: document-first tree, local-only private inventory, 10 repo roots / 47 folders, retired routes and preserved independent views.');
