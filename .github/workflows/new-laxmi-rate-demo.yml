@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       products_csv:
-        description: 'Approved products CSV from the Google Sheet (exact seven headings)'
+        description: 'Approved products CSV from the Google Sheet (exact six headings)'
         required: false
         type: string
       catalogue_mode:

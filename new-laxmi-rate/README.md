@@ -1,6 +1,6 @@
 # New Laxmi Store catalogue
 
-The Google Sheet is authoritative for approved public catalogue fields: Item Name, EXIM Code, Description, Rate, Wholesale Value, Retail Value, Photo. No article IDs or database terminology is required. Blank codes, amounts and photos remain unknown. Existing example items and amounts are clearly marked SAMPLE. The earlier category/subcategory labels survive in descriptions; categories are not a published field.
+The Google Sheet is authoritative for approved public catalogue fields: Item Name, EXIM Code, Description, Wholesale Value, Retail Value, Photo. No article IDs or database terminology is required. Blank codes, amounts and photos remain unknown. Existing example items and amounts are clearly marked SAMPLE. The earlier category/subcategory labels survive in descriptions; categories are not a published field.
 
 Google Sheet: https://docs.google.com/spreadsheets/d/1zNf0DJ6-jC4j71XaL44XqF9ktgT82Sg9RjNQXVuUPwU/edit
 Operating guide: https://docs.google.com/document/d/19lHTi-M9kv6qsim6lNhNM8T2irnWRtw0uoDeEKGJ4RY/edit
