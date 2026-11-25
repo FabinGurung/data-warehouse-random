@@ -1,17 +1,18 @@
-name: New Laxmi Rate demo refresh
+name: New Laxmi Store catalogue QA and refresh
 on:
   workflow_dispatch:
     inputs:
       products_csv:
-        description: 'Optional products CSV exported from the demo Sheet (exact seven headers)'
+        description: 'Approved products CSV from the Google Sheet (exact seven headings)'
         required: false
         type: string
-      categories_csv:
-        description: 'Optional categories CSV (name,subcategories)'
-        required: false
-        type: string
+      catalogue_mode:
+        description: 'Sample or reviewed publication'
+        type: choice
+        options: [SAMPLE, APPROVED]
+        default: SAMPLE
       publish:
-        description: 'Commit validated public DEMO snapshot to selected Pages branch'
+        description: 'Confirm Sheet and guide reviewed; commit validated snapshot'
         required: true
         default: false
         type: boolean
@@ -33,12 +34,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Test catalogue validation
+        run: python -m unittest discover -s new-laxmi-rate -p 'test_*.py'
       - name: Install read-only Google client
+        if: github.event_name == 'workflow_dispatch'
         run: python -m pip install google-auth requests
-      - name: Validate or refresh public demo snapshot
+      - name: Validate or refresh catalogue snapshot
         env:
           PRODUCTS_CSV: ${{ github.event_name == 'workflow_dispatch' && inputs.products_csv || '' }}
-          CATEGORIES_CSV: ${{ github.event_name == 'workflow_dispatch' && inputs.categories_csv || '' }}
+          CATALOGUE_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.catalogue_mode || 'SAMPLE' }}
+          REQUIRE_SOURCE: ${{ github.event_name == 'workflow_dispatch' && inputs.publish }}
           LAXMI_SHEETS_CREDENTIALS: ${{ github.event_name == 'workflow_dispatch' && secrets.LAXMI_SHEETS_CREDENTIALS || '' }}
           LAXMI_SHEET_ID: ${{ vars.LAXMI_SHEET_ID }}
         run: python new-laxmi-rate/refresh.py
@@ -46,8 +51,8 @@ jobs:
         run: node --check new-laxmi-rate/app.js
       - uses: actions/upload-artifact@v4
         with:
-          name: new-laxmi-rate-demo
-          path: new-laxmi-rate/
+          name: new-laxmi-store-catalogue
+          path: new-laxmi-rate/catalogue.json
       - name: Update published branch snapshot
         if: github.event_name == 'workflow_dispatch' && inputs.publish
         run: |
@@ -55,6 +60,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add new-laxmi-rate/catalogue.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Refresh validated New Laxmi Rate DEMO snapshot"
+          git commit -m "Refresh reviewed New Laxmi Store catalogue"
           git push origin HEAD:gis-site-selection
-          echo "Snapshot committed. Branch-based Pages may require a separate deployment trigger." >> "$GITHUB_STEP_SUMMARY"
+          echo "Snapshot committed. Branch-based Pages may require a separate deployment trigger; reconcile main after publication." >> "$GITHUB_STEP_SUMMARY"

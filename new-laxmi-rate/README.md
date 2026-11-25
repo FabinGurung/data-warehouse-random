@@ -1,9 +1,8 @@
-# New Laxmi Rate — demonstration
+# New Laxmi Store catalogue
 
-Public synthetic sample catalogue. The editable authority is the Google Sheet; the Google Doc explains the operating procedure. No real products, photographs, credentials or users are included. The website is a read-only snapshot, not an authenticated application.
+The Google Sheet is authoritative for approved public catalogue fields: Item Name, EXIM Code, Description, Rate, Wholesale Value, Retail Value, Photo. No article IDs or database terminology is required. Blank codes, amounts and photos remain unknown. Existing example items and amounts are clearly marked SAMPLE. The earlier category/subcategory labels survive in descriptions; categories are not a published field.
 
-- Sheet: https://docs.google.com/spreadsheets/d/1zNf0DJ6-jC4j71XaL44XqF9ktgT82Sg9RjNQXVuUPwU/edit
-- Guide: https://docs.google.com/document/d/19lHTi-M9kv6qsim6lNhNM8T2irnWRtw0uoDeEKGJ4RY/edit
-- Gallery/table, search, category and subcategory filters, sorting, filtered CSV, print-to-PDF.
-- Edit/import/export Excel in Google Sheets, not the public page.
-- Refresh via the manual workflow (Google Sheet CSV export; optional service-account integration can be configured later). Do not publish real records.
+Google Sheet: https://docs.google.com/spreadsheets/d/1zNf0DJ6-jC4j71XaL44XqF9ktgT82Sg9RjNQXVuUPwU/edit
+Operating guide: https://docs.google.com/document/d/19lHTi-M9kv6qsim6lNhNM8T2irnWRtw0uoDeEKGJ4RY/edit
+
+Review the private submissions and update Sheet/guide first. Then publish an approved snapshot using the manual CSV workflow or an authorized configured read-only integration. Do not expose the private submission document or credentials. Photo values are approved HTTPS URLs or existing local photos/ paths. Keep original private photos in Drive. Manual Actions publication may require a separate Pages deployment trigger and main reconciliation. No automatic private-Sheet access is implied.
