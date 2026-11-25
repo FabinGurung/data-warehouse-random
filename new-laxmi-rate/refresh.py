@@ -1,17 +1,17 @@
-"""Validate the seven-column approved public catalogue; unknown amounts remain null."""
+"""Validate the six-column approved public catalogue; unknown amounts remain null."""
 import csv, io, json, math, os, pathlib, re
 from urllib.parse import urlparse
 ROOT=pathlib.Path(__file__).resolve().parent
 TARGET=ROOT/"catalogue.json"
-HEAD=["Item Name","EXIM Code","Description","Rate","Wholesale Value","Retail Value","Photo"]
-AMOUNTS=HEAD[3:6]
+HEAD=["Item Name","EXIM Code","Description","Wholesale Value","Retail Value","Photo"]
+AMOUNTS=HEAD[3:5]
 def parse_rows(rows):
     if not rows or rows[0]!=HEAD: raise ValueError("Expected exact products headers: "+", ".join(HEAD))
     products=[]
     for row in rows[1:]:
         if not any(x is not None and str(x).strip() for x in row): continue
-        if len(row)>7: raise ValueError("Unexpected extra columns")
-        row=list(row)+[""]*(7-len(row))
+        if len(row)>len(HEAD): raise ValueError("Unexpected extra columns")
+        row=list(row)+[""]*(len(HEAD)-len(row))
         p=dict(zip(HEAD,row))
         for key in HEAD:
             if key not in AMOUNTS: p[key]="" if p[key] is None else str(p[key]).strip()
@@ -48,7 +48,7 @@ def main():
         from google.auth.transport.requests import AuthorizedSession
         from urllib.parse import quote
         session=AuthorizedSession(Credentials.from_service_account_info(json.loads(credentials),scopes=["https://www.googleapis.com/auth/spreadsheets.readonly"]))
-        response=session.get("https://sheets.googleapis.com/v4/spreadsheets/"+quote(sid,safe="")+"/values/"+quote("products!A1:G10001",safe=""),params={"valueRenderOption":"UNFORMATTED_VALUE"},timeout=30)
+        response=session.get("https://sheets.googleapis.com/v4/spreadsheets/"+quote(sid,safe="")+"/values/"+quote("products!A1:F10001",safe=""),params={"valueRenderOption":"UNFORMATTED_VALUE"},timeout=30)
         response.raise_for_status()
         rows=response.json().get("values",[])
     else:
