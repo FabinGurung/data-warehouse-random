@@ -1,99 +1,30 @@
-# Sumita Pilates Studio — Static Website Prototype
+# JP Sandbox — experiment library
 
-A multi-page, data-driven Pilates studio website that works on GitHub Pages without a build system, database or paid hosting.
+This public repository owns six independent, active web experiments. Google Drive remains the authoritative home of source documents, private evidence and non-runtime archives. Never publish customer submissions, business workbooks or credentials here.
 
-## Why this is not one giant `index.html`
+- [Experiment launcher](https://fabingurung.github.io/data-warehouse-random/) — `index.html`
+- [Paila Pilates](https://fabingurung.github.io/data-warehouse-random/pilates.html) — studio prototype and browser-only booking demo
+- [New Laxmi Store](https://fabingurung.github.io/data-warehouse-random/new-laxmi-rate/) — sample product catalogue
+- [Pilates GIS](https://fabingurung.github.io/data-warehouse-random/gis/) — location intelligence
+- [JP Atlas](https://fabingurung.github.io/data-warehouse-random/jp-graph/) — knowledge graph
+- [JP Document Tree](https://fabingurung.github.io/data-warehouse-random/jp-drive-explorer/) — repository/source hierarchy
+- [Web Design Skills](https://fabingurung.github.io/data-warehouse-random/web-design-skills/) — reusable skills and demos
 
-The project separates **content**, **design** and **behaviour**:
+## Source and publication boundaries
 
-- HTML pages contain page structure.
-- `assets/css/styles.css` controls the full visual design.
-- `assets/js/` contains reusable behaviour.
-- `data/` contains the business information most owners will change.
-- `source/` contains the internal Excel workbook for reference.
-- `docs/` explains deployment, Excel mapping and what is not live yet.
+- [Designated Drive folder](https://drive.google.com/drive/folders/1q0VpM43s4lZsbjZNLqYVNVMrqL5YPsHC): native Docs/Sheets, project-specific reference records and legacy archives.
+- [New Laxmi source folder](https://drive.google.com/drive/folders/1haMaeJ04qaKT11W_jIn3LvNMvMDlwtUk): editable sample catalogue and operating guide. The guide registers restricted client submissions; never place submission links or private content in Git. Updates are manual and publication-approved only.
+- [Web Design Skills](web-design-skills/README.md): pinned upstream source, licenses and machine registry.
+- [Paila operational pointer](https://drive.google.com/drive/folders/1kylwj3F9XYug_ZOiINrOod6yJ3PuzgQ9): operational source remains in its designated provider.
+- [Retired trials and legacy source archive](https://drive.google.com/drive/folders/1JXI9EANqEuk_kWFkzGafEWPdkOIApI5q): exact original bytes of retired/non-runtime files are preserved in Drive. The 25 November 2026 cleanup package includes the old planning workbook, screenshots, outdated instructions and retired source-gallery files.
+- [Archive package](https://drive.google.com/file/d/1kN1rU6EDA87-xhzoRSICqQoC-iEem9YS/view): SHA-256 `8cf4131c66a1a737570ded66f76c8c5227b5f5cd7251ad40d814ac7a74faf164`, source commit `852f08badc9db194d00e3aa037102829b92a718f`.
 
-This is easier to maintain than putting HTML, CSS, JavaScript and all data into one file.
+## Working branches
 
-## Open it now
+Pages publishes from `gis-site-selection` at repository root. Keep `main` reconciled to the publishing tree after changes without rewriting Git history. Older branches are historical, not active website views. Read `sandbox-experiments.json` for the active route inventory. Run launcher, graph, document tree, catalogue and skills QA as applicable. Do not modify A7 from this repository.
 
-Double-click `index.html`. The project uses JavaScript data files instead of `fetch()`, so the public pages also work when opened directly from a folder.
+## Pilates prototype
 
-## Main public pages
+The approved demonstration data in `data/` and interface code in `assets/` are still active. The workbook is not a runtime dependency and is archived in Drive; see [Excel mapping](docs/EXCEL_TO_WEBSITE_MAPPING.md) and [demo limitations](docs/WHAT_IS_DEMO_VS_LIVE.md). The [data editor](tools/data-editor.html) creates downloadable replacement public data files. Prototype bookings and member sessions are browser-local, not secure live services.
 
-- `index.html` — home page
-- `schedule.html` — 21-day class schedule, filters, capacity and prototype booking
-- `passes.html` — class packs and memberships
-- `instructors.html` — instructor profiles
-- `about.html` — studio story, values and FAQ
-- `contact.html` — email/phone/WhatsApp contact flow
-- `member.html` — browser-only prototype member portal
-
-## Owner editing without touching HTML
-
-Open `tools/data-editor.html` to change:
-
-1. Business details
-2. Weekly schedule
-3. Passes and prices
-
-The editor downloads a replacement data file. Upload that file to the matching `data/` folder in GitHub.
-
-For direct editing:
-
-- Brand/contact/policies: `data/site-data.js`
-- Weekly classes: `data/schedule-data.js`
-- Memberships/pricing: `data/passes-data.js`
-- Instructors: `data/instructors-data.js`
-- Demo customer progress: `data/member-demo.js`
-
-## Prototype login
-
-- Email: `sumita@example.com`
-- PIN: `1234`
-
-This is not secure authentication. It exists only to demonstrate the future member experience.
-
-## GitHub Pages deployment
-
-See `docs/GITHUB_PAGES_DEPLOYMENT.md`.
-
-The simplest structure is to upload the **contents of this folder** to the repository root and publish Pages from the `main` branch `/root`.
-
-## Excel relationship
-
-The site is designed around the workbook in:
-
-`source/Pilates_Studio_Business_Management_System.xlsx`
-
-The static website does **not** read the Excel workbook directly. Public data is copied into safe data files. See `docs/EXCEL_TO_WEBSITE_MAPPING.md`.
-
-This separation is intentional: financial records, confidential health notes, shareholder analytics and private member data must never be uploaded into public website files.
-
-## What already works
-
-- Responsive desktop/mobile layout
-- Mobile drawer navigation
-- Recurring 21-day schedule generated from weekly templates
-- Filters by location, class and instructor
-- Capacity, low-spots and waitlist states
-- Browser-local reservation prototype
-- Calendar `.ics` download
-- Browser-local account and pass prototype
-- Member session balance and progress demonstration
-- Contact email and WhatsApp links
-- No-code owner data editor
-- GitHub Pages compatibility
-
-## What requires a real booking service or backend
-
-- Secure accounts and passwords
-- Shared, real-time capacity across visitors
-- Online payments and invoices
-- Automatic reminder and waitlist emails
-- Staff/admin login
-- Excel-to-website automatic synchronisation
-- Secure medical screening and consent
-- Real cancellation/refund enforcement
-
-Read `docs/WHAT_IS_DEMO_VS_LIVE.md` before using the site publicly.
+Historical files removed from the active tree remain in Git commit history. This cleanup is not a security purge of earlier public history.
