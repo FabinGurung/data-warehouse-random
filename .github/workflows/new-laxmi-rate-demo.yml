@@ -48,7 +48,10 @@ jobs:
           LAXMI_SHEET_ID: ${{ vars.LAXMI_SHEET_ID }}
         run: python new-laxmi-rate/refresh.py
       - name: JavaScript syntax check
-        run: node --check new-laxmi-rate/app.js
+        run: |
+          node --check new-laxmi-rate/app.js
+          node --check new-laxmi-rate/graph.js
+          node new-laxmi-rate/test_graph.cjs
       - uses: actions/upload-artifact@v4
         with:
           name: new-laxmi-store-catalogue
